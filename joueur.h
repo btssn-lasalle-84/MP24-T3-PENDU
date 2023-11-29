@@ -12,6 +12,7 @@ private:
 public:
   Joueur(string nom, int tentativeRestantes);
   void enregisterNom();
+  int getTentative();
 };
 
 #endif // JOUEUR_H
