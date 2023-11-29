@@ -8,6 +8,10 @@ class Joueur {
 private:
   string nom;
   int tentativeRestantes;
+
+public:
+  Joueur(string nom, int tentativeRestantes);
+  void enregisterNom();
 };
 
 #endif // JOUEUR_H
