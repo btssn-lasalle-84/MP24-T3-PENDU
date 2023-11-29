@@ -1,9 +1,11 @@
-//#include "dictionnaire.cpp"
+#ifdef DECTIONNAIRE_H
+#include "dictionnaire.cpp"
 #include <string>
-
-class dictionnaire
+class Dictionnaire
 {
-    private :
-        std::string listeMots;
-    public :
+  private:
+    std::string listeMots;
+
+  public:
 };
+#endif
