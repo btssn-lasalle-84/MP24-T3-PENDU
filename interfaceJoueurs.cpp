@@ -1,2 +1,5 @@
 #include <iostream>
-#include "interface_joueur.h"
+#include "interfaceJoueurs.h"
+
+interfaceJoueur::interfaceJoueur(char lettreProposee) : lettreProposee(lettreProposee)
+{}

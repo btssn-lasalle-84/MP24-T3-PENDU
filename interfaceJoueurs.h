@@ -7,10 +7,10 @@ class interfaceJoueur
 {
     private :
     char lettreProposee;
-   
+
     public :
+    interfaceJoueur (char lettreProposee);
     void dessinerPendu();
-    
 };
 
 #endif //INTERFACE_JOUEUR_H
