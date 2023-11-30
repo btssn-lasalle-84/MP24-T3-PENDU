@@ -4,8 +4,17 @@
 #include "joueur.h"
 #include "jeuPendu.h"
 
-
-jeuPendu::jeuPendu(Joueur* monJoueur) : monJoueur(monJoueur)
+JeuPendu::JeuPendu(Joueur* monJoueur, Dictionnaire* dictionnaire) :
+    monJoueur(monJoueur), dictionnaire(dictionnaire)
 {
 }
 
+std::string JeuPendu::getMot() const
+{
+    return mot;
+}
+
+void JeuPendu::setMot(std::string mot)
+{
+    this->mot = mot;
+}
