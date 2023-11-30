@@ -1,5 +1,6 @@
-#ifdef DICTIONNAIRE_H
-#include "dictionnaire.cpp"
+#ifndef DICTIONNAIRE_H
+#define DICTIONNAIRE_H
+
 #include <string>
 class Dictionnaire
 {
@@ -7,5 +8,7 @@ class Dictionnaire
     std::string listeMots;
 
   public:
+    Dictionnaire(std::string listeMots);
+  
 };
 #endif
