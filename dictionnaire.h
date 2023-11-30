@@ -1,11 +1,14 @@
-#ifdef DICTIONNAIRE_H
-#include "dictionnaire.cpp"
+#ifndef DICTIONNAIRE_H
+#define DICTIONNAIRE_H
 #include <string>
+#include <vector>
 class Dictionnaire
 {
   private:
     std::string listeMots;
 
   public:
+    Dictionnaire(std::string listeMots);
+    void genererMot();
 };
-#endif
+#endif // DICTIONNAIRE_H

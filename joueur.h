@@ -6,10 +6,10 @@
 class Joueur {
 private:
   std::string nom;
-  int tentativeRestantes;
+  int tentativesRestantes;
 
 public:
-  Joueur(std::string nom, int tentativeRestantes);
+  Joueur(std::string nom, int tentativesRestantes);
   void enregisterNom();
   int getTentative();
 };
