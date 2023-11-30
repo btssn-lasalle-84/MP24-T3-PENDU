@@ -1,4 +1,4 @@
-#ifdef DECTIONNAIRE_H
+#ifdef DICTIONNAIRE_H
 #include "dictionnaire.cpp"
 #include <string>
 class Dictionnaire
