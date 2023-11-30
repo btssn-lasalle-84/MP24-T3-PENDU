@@ -1,5 +1,5 @@
-#ifndef DICTIONNAIRE_H
 #define DICTIONNAIRE_H
+#ifdef DICTIONNAIRE_H
 
 #include "dictionnaire.cpp"
 #include <string>
