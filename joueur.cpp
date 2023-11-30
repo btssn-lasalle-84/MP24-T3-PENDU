@@ -3,8 +3,8 @@
 
 using namespace std;
 
-Joueur::Joueur(string nom, int tentativeRestantes) :
-    nom(nom), tentativeRestantes(tentativeRestantes)
+Joueur::Joueur(string nom, int tentativesRestantes) :
+    nom(nom), tentativesRestantes(tentativesRestantes)
 {
 }
 
@@ -16,5 +16,5 @@ void Joueur::enregisterNom()
 
 int Joueur::getTentative()
 {
-    return tentativeRestantes;
+    return tentativesRestantes;
 }
