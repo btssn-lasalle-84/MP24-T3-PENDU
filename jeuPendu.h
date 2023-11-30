@@ -9,11 +9,11 @@ class jeuPendu
 {
   private:
     std::vector<int> pendu();
-    Joueur*     monJoueur;
-    int         essai = 9;
+    Joueur*          monJoueur;
+    int              essai = 9;
 
   public:
-    jeuPendu(Joueur* monJoueur = nullptr);
+    jeuPendu(Joueur* monJoueur = nullptr, int essai);
     bool estFinPartie();
     bool verifierMot();
     void jouer();
