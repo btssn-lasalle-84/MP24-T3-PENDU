@@ -3,13 +3,12 @@
 #include <vector>
 #include "joueur.h"
 #include "jeuPendu.h"
+#include "interfaceJoueurs.h"
 
-
-JeuPendu::JeuPendu(Joueur* monJoueur, Dictionnaire* dictionnaire) :
-    monJoueur(monJoueur), dictionnaire(dictionnaire)
+JeuPendu::JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionaire, std::string& mot) :
+    mot(mot)
 {
 }
-
 std::string JeuPendu::getMot() const
 
 {
@@ -20,4 +19,3 @@ void JeuPendu::setMot(std::string mot)
 {
     this->mot = mot;
 }
-

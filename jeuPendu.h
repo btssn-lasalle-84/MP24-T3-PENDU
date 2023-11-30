@@ -3,21 +3,21 @@
 #include <string>
 #include <vector>
 #include "dictionnaire.h"
+#define ESSAI 9
 
 class Joueur;
 class Dictionnaire;
+class interfaceJoueurs;
 
 class JeuPendu
 {
   private:
-    std::vector<int> pendu();
-    Joueur *monJoueur;
-    Dictionnaire*    dictionnaire;
-    int              essai = 9;
-    std::string      mot;
+    interfaceJoueurs* monInterface;
+    Dictionnaire*     dictionnaire;
+    std::string&      mot;
 
   public:
-    JeuPendu(Joueur* monJoueur = nullptr, Dictionnaire* dictionaire = nullptr);
+    JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionaire, std::string& mot);
     std::string getMot() const;
     void        setMot(std::string mot);
     bool        estFinPartie();

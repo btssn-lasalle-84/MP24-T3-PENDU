@@ -3,18 +3,15 @@
 
 using namespace std;
 
-Joueur::Joueur(string nom, int tentativesRestantes) :
-    nom(nom), tentativesRestantes(tentativesRestantes)
+Joueur::Joueur(const std::string& nom) : nom(nom)
 {
 }
 
-void Joueur::enregisterNom()
+void Joueur::setEnregisterNom(std::string nom)
 {
-    cout << "saisir votre nom : " << endl;
-    cin >> nom;
+    this->nom = nom;
 }
-
-int Joueur::getTentative()
+int Joueur::getTentativeRestantes()
 {
     return tentativesRestantes;
 }
