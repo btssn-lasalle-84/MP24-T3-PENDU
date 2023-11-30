@@ -1,4 +1,6 @@
-#ifdef DECTIONNAIRE_H
+#ifndef DICTIONNAIRE_H
+#define DICTIONNAIRE_H
+
 #include "dictionnaire.cpp"
 #include <string>
 class Dictionnaire
@@ -8,4 +10,4 @@ class Dictionnaire
 
   public:
 };
-#endif
+#endif // DICTIONNAIRE_H

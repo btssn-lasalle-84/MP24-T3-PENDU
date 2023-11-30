@@ -3,7 +3,7 @@
 
 #include <string>
 
-class interfaceJoueur 
+class interfaceJoueur
 {
     private :
     char lettreProposee;
