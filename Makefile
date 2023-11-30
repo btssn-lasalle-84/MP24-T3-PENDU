@@ -1,9 +1,30 @@
-test-pendu.out: jeuPendu.o joueur.o
-	g++ -o test-pendu.out jeuPendu.o joueur.o
+# Nom de l'exécutable
+EXEC = pendu
 
-jeuPendu.o: jeuPendu.cpp 
-	g++ -c jeuPendu.cpp
+# Compileur
+CXX = g++
 
-joueur.o: joueur.cpp
-	g++ -c joueur.cpp
+# Options du compilateur
+CXXFLAGS = -Wall
 
+# Fichiers source
+SOURCES = dictionnaire.cpp \
+          interfaceJoueurs.cpp \
+          jeuPendu.cpp \
+          joueur.cpp \
+          main.cpp
+
+# Fichuiers objets
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# Executable
+$(EXECUTABLE): $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(EXECUTABLE)
+
+# Compilation des fichiers source
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Nettoyeur
+clean:
+	rm -f $(OBJS) $(EXEC)
