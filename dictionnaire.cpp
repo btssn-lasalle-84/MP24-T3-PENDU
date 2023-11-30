@@ -20,3 +20,4 @@ std::string Dictionnaire::genererMotSecret() const
 
     return listeMots[numeroMot];
 }
+
