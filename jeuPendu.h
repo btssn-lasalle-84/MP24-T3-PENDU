@@ -3,13 +3,12 @@
 #include <string>
 #include <vector>
 
-using namespace std;
 class Joueur;
 
 class jeuPendu
 {
   private:
-    vector<int> pendu();
+    std::vector<int> pendu();
     Joueur*     monJoueur;
     int         essai = 9;
 

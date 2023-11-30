@@ -1,6 +1,8 @@
 #include "joueur.h"
 #include <iostream>
 
+using namespace std;
+
 Joueur::Joueur(string nom, int tentativeRestantes) :
     nom(nom), tentativeRestantes(tentativeRestantes)
 {

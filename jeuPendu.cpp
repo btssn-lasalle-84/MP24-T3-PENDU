@@ -9,14 +9,3 @@ jeuPendu::jeuPendu(Joueur* monJoueur) : monJoueur(monJoueur)
 {
 }
 
-bool jeuPendu::estFinPartie()
-{
-    if(essai = 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}

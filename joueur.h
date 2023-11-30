@@ -2,15 +2,14 @@
 #define JOUEUR_H
 
 #include <string>
-using namespace std;
 
 class Joueur {
 private:
-  string nom;
+  std::string nom;
   int tentativeRestantes;
 
 public:
-  Joueur(string nom, int tentativeRestantes);
+  Joueur(std::string nom, int tentativeRestantes);
   void enregisterNom();
   int getTentative();
 };
