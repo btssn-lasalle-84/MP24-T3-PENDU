@@ -1,5 +1,5 @@
 # Nom de l'exécutable
-EXEC = pendu
+EXECUTABLE = pendu
 
 # Compileur
 CXX = g++
@@ -27,4 +27,4 @@ $(EXECUTABLE): $(OBJECTS)
 
 # Nettoyeur
 clean:
-	rm -f $(OBJS) $(EXEC)
+	rm -f $(OBJECTS) $(EXECUTABLE)
