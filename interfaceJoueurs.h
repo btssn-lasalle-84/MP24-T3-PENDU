@@ -1,15 +1,15 @@
-#ifndef INTERFACE_JOUEUR_H
-#define INTERFACE_JOUEUR_H
+#ifndef INTERFACE_JOUEURS_H
+#define INTERFACE_JOUEURS_H
 
 #include <string>
 
-class interfaceJoueur
+class interfaceJoueurs
 {
     private :
     char lettreProposee;
 
     public :
-    interfaceJoueur (char lettreProposee);
+    interfaceJoueurs (char lettreProposee);
     void dessinerPendu();
 };
 
