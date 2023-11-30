@@ -9,7 +9,7 @@ class interfaceJoueurs
     char lettreProposee;
 
     public :
-    interfaceJoueurs (char lettreProposee);
+    interfaceJoueurs ();
     void dessinerPendu();
 };
 
