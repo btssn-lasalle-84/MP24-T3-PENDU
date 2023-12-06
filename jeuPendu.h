@@ -9,11 +9,11 @@
 
 class Joueur;
 class Dictionnaire;
-class interfaceJoueurs;
+class InterfaceJoueurs;
 class JeuPendu
 {
   private:
-    interfaceJoueurs* monInterface;
+    InterfaceJoueurs* monInterface;
     Dictionnaire*     dictionnaire;
     std::string&      mot;
     std::string&      motAtrouver;
@@ -21,7 +21,7 @@ class JeuPendu
     Joueur*           monJoueur;
 
   public:
-    JeuPendu(interfaceJoueurs* monInterface,
+    JeuPendu(InterfaceJoueurs* monInterface,
              Dictionnaire*     dictionnaire,
              std::string&      mot,
              std::string&      motAtrouver);
@@ -32,7 +32,7 @@ class JeuPendu
     void        choisirMot();
     void        jouer();
     void        relationDictionnaire(Dictionnaire* dictionnaire);
-    void        relationInterfaceJoueurs(interfaceJoueurs* monInterface);
+    void        relationInterfaceJoueurs(InterfaceJoueurs* monInterface);
     void        relationJoueur(Joueur* monJoueur);
 };
 

@@ -4,7 +4,7 @@
 #include "jeuPendu.h"
 #include "interfaceJoueurs.h"
 
-JeuPendu::JeuPendu(interfaceJoueurs* monInterface,
+JeuPendu::JeuPendu(InterfaceJoueurs* monInterface,
                    Dictionnaire*     dictionnaire,
                    std::string&      mot,
                    std::string&      motAtrouver) :
@@ -28,7 +28,7 @@ void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire)
     this->dictionnaire = dictionnaire;
 }
 
-void JeuPendu::relationInterfaceJoueurs(interfaceJoueurs* monInterface)
+void JeuPendu::relationInterfaceJoueurs(InterfaceJoueurs* monInterface)
 {
     this->monInterface = monInterface;
 }
