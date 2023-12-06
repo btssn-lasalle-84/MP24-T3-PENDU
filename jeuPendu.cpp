@@ -1,4 +1,3 @@
-#include "jeuPendu.h"
 #include <iostream>
 #include <vector>
 #include "joueur.h"
@@ -6,11 +5,11 @@
 #include "interfaceJoueurs.h"
 
 JeuPendu::JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionnaire, std::string& mot) :
-    mot(mot)
+    monInterface(monInterface), dictionnaire(dictionnaire), mot(mot)
 {
 }
-std::string JeuPendu::getMot() const
 
+std::string JeuPendu::getMot()
 {
     return mot;
 }
@@ -20,7 +19,24 @@ void JeuPendu::setMot(std::string mot)
     this->mot = mot;
 }
 
-void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire) 
+bool JeuPendu::estFinPartie() const
+{
+    // Implémentez conditions de fin de partie
+    return false;
+}
+
+bool JeuPendu::verifierMot() const
+{
+    // Implémentez conditions de vérifications
+    return false;
+}
+
+void JeuPendu::choisirMot()
+{
+    setMot(dictionnaire->genererMotSecret());
+}
+
+void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire)
 {
     this->dictionnaire = dictionnaire;
 }
