@@ -4,9 +4,10 @@
 #include <string>
 #include <vector>
 
-class interfaceJoueurs
+class InterfaceJoueurs
 {
   private:
+
   public:
     interfaceJoueurs();
 
@@ -17,3 +18,14 @@ class interfaceJoueurs
 };
 
 #endif // INTERFACE_JOUEURS_H
+
+    char lettreProposee;
+    int  tentativesRestantes;
+
+  public:
+    InterfaceJoueurs();
+    void dessinerPendu();
+    int  getTentativeRestantes();
+};
+
+#endif // INTERFACE_JOUEUR_H

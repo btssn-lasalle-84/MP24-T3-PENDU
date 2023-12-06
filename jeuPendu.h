@@ -7,6 +7,9 @@
 #include <vector>
 #include "dictionnaire.h"
 
+#include "joueur.h"
+#define ESSAI 9
+
 class Joueur;
 class Dictionnaire;
 class interfaceJoueurs;
@@ -17,17 +20,24 @@ class JeuPendu
     interfaceJoueurs* monInterface;
     Dictionnaire*     dictionnaire;
     std::string&      mot;
+    std::string&      motAtrouver;
+    int               tentativeRestantes = ESSAI;
+    Joueur*           monJoueur;
 
   public:
-    JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionnaire, std::string& mot);
-    std::string getMot();
+    JeuPendu(interfaceJoueurs* monInterface,
+             Dictionnaire*     dictionnaire,
+             std::string&      mot,
+             std::string&      motAtrouver);
+    std::string getMot() const;
     void        setMot(std::string mot);
-    bool        estFinPartie() const;
-    bool        verifierMot() const;
-    void        jouer();
+    bool        estFinPartie();
+    bool        verifierMot();
     void        choisirMot();
-    void        relationDictionnaire(Dictionnaire* dictionnaire);
-    void        relationInterfaceJoueurs(interfaceJoueurs* monInterface);
+    void        jouer();
+
+    void relationDictionnaire(Dictionnaire* dictionnaire);
+    void relationInterfaceJoueurs(interfaceJoueurs* monInterface);
 };
 
 #endif // JEU_PENDU_H

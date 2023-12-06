@@ -1,4 +1,5 @@
 #include "interfaceJoueurs.h"
+
 #include <iostream>
 
 interfaceJoueurs::interfaceJoueurs()
@@ -26,4 +27,8 @@ void interfaceJoueurs::afficherTentatives(int tentativesRestantes, const std::ve
         std::cout << lettre << " ";
     }
     std::cout << std::endl;
+
+int InterfaceJoueurs::getTentativeRestantes()
+{
+    return tentativesRestantes;
 }
