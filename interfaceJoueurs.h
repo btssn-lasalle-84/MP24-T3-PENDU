@@ -3,14 +3,16 @@
 
 #include <string>
 
-class interfaceJoueurs
+class InterfaceJoueurs
 {
-    private :
+  private:
     char lettreProposee;
+    int  tentativesRestantes;
 
-    public :
-    interfaceJoueurs ();
+  public:
+    InterfaceJoueurs();
     void dessinerPendu();
+    int  getTentativeRestantes();
 };
 
-#endif //INTERFACE_JOUEUR_H
+#endif // INTERFACE_JOUEUR_H
