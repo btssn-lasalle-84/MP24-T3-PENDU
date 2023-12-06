@@ -1,7 +1,6 @@
 #include "interfaceJoueurs.h"
 #include <iostream>
 #include <limits>
-<<<<<<< HEAD
 
 InterfaceJoueurs::InterfaceJoueurs()
 {
@@ -18,8 +17,6 @@ char InterfaceJoueurs::demanderLettre() const
     std::cin >> lettreProposee;
     return lettreProposee;
 }
-=======
->>>>>>> Finalisation du main.cpp et fabrication pendu.out
 
 void InterfaceJoueurs::afficherTentatives(int                      tentativesRestantes,
                                           const std::vector<char>& lettresUtilisees) const
@@ -33,22 +30,8 @@ void InterfaceJoueurs::afficherTentatives(int                      tentativesRes
     std::cout << std::endl;
 }
 
-<<<<<<< HEAD
 std::string InterfaceJoueurs::saisirNomJoueur()
 {
-=======
-void InterfaceJoueurs::dessinerPendu()
-{
-}
-
-int InterfaceJoueurs::getTentativeRestantes()
-{
-    return tentativesRestantes;
-}
-
-std::string InterfaceJoueurs::saisirNomJoueur()
-{
->>>>>>> Finalisation du main.cpp et fabrication pendu.out
     std::string nom;
 
     do
