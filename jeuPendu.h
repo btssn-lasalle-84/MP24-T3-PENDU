@@ -25,7 +25,6 @@ class JeuPendu
     Joueur*           monJoueur;
 
   public:
-
     JeuPendu(interfaceJoueurs* monInterface,
              Dictionnaire*     dictionnaire,
              std::string&      mot,
@@ -37,16 +36,8 @@ class JeuPendu
     void        choisirMot();
     void        jouer();
 
-    JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionnaire, std::string& mot);
-    std::string getMot();
-    void        setMot(std::string mot);
-    bool        estFinPartie() const;
-    bool        verifierMot() const;
-    void        jouer();
-    void        choisirMot();
-
-    void        relationDictionnaire(Dictionnaire* dictionnaire);
-    void        relationInterfaceJoueurs(interfaceJoueurs* monInterface);
+    void relationDictionnaire(Dictionnaire* dictionnaire);
+    void relationInterfaceJoueurs(interfaceJoueurs* monInterface);
 };
 
 #endif // JEU_PENDU_H
