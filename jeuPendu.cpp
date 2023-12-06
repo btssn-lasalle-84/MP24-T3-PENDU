@@ -27,6 +27,7 @@ void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire)
 {
     this->dictionnaire = dictionnaire;
 }
+
 void JeuPendu::relationInterfaceJoueurs(interfaceJoueurs* monInterface)
 {
     this->monInterface = monInterface;
@@ -43,10 +44,12 @@ bool JeuPendu::estFinPartie()
         return false;
     }
 }
+
 void JeuPendu::choisirMot()
 {
     setMot(dictionnaire->genererMotSecret());
 }
+
 bool JeuPendu::verifierMot()
 {
     if(mot == motAtrouver)
@@ -57,4 +60,9 @@ bool JeuPendu::verifierMot()
     {
         return false;
     }
+}
+
+void JeuPendu::relationJoueur(Joueur* monJoueur)
+{
+    this->monJoueur = monJoueur;
 }
