@@ -4,31 +4,46 @@
 #include "jeuPendu.h"
 #include "interfaceJoueurs.h"
 
-JeuPendu::JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionnaire, std::string& mot) :
-    monInterface(monInterface), dictionnaire(dictionnaire), mot(mot)
+JeuPendu::JeuPendu(interfaceJoueurs* monInterface,
+                   Dictionnaire*     dictionnaire,
+                   Joueur*           monJoueur,
+                   std::string&      mot,
+                   std::string&      motAtrouver) :
+    monInterface(monInterface),
+    dictionnaire(dictionnaire), monJoueur(monJoueur), mot(mot), motAtrouver(motAtrouver)
 {
 }
 
-std::string JeuPendu::getMot()
+std::string JeuPendu::getMot() const
 {
     return mot;
 }
 
-void JeuPendu::setMot(std::string mot)
+void JeuPendu::setMot(const std::string& mot)
 {
     this->mot = mot;
 }
 
-bool JeuPendu::estFinPartie() const
+void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire)
 {
-    // Implémentez conditions de fin de partie
-    return false;
+    this->dictionnaire = dictionnaire;
 }
 
-bool JeuPendu::verifierMot() const
+void JeuPendu::relationInterfaceJoueurs(interfaceJoueurs* monInterface)
 {
-    // Implémentez conditions de vérifications
-    return false;
+    this->monInterface = monInterface;
+}
+
+bool JeuPendu::estFinPartie()
+{
+    if(ESSAI <= 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void JeuPendu::choisirMot()
@@ -36,11 +51,19 @@ void JeuPendu::choisirMot()
     setMot(dictionnaire->genererMotSecret());
 }
 
-void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire)
+bool JeuPendu::verifierMot()
 {
-    this->dictionnaire = dictionnaire;
+    if(mot == motAtrouver)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
-void JeuPendu::relationInterfaceJoueurs(interfaceJoueurs* monInterface)
+
+void JeuPendu::relationJoueur(Joueur* monJoueur)
 {
-    this->monInterface = monInterface;
+    this->monJoueur = monJoueur;
 }
