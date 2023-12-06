@@ -7,9 +7,8 @@
 class InterfaceJoueurs
 {
   private:
-
   public:
-    interfaceJoueurs();
+    InterfaceJoueurs();
 
     char demanderLettre() const;
     void dessinerPendu();
@@ -18,14 +17,3 @@ class InterfaceJoueurs
 };
 
 #endif // INTERFACE_JOUEURS_H
-
-    char lettreProposee;
-    int  tentativesRestantes;
-
-  public:
-    InterfaceJoueurs();
-    void dessinerPendu();
-    int  getTentativeRestantes();
-};
-
-#endif // INTERFACE_JOUEUR_H
