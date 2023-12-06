@@ -12,7 +12,6 @@ SOURCES = dictionnaire.cpp \
           interfaceJoueurs.cpp \
           jeuPendu.cpp \
           joueur.cpp \
-          main.cpp
 
 # Fichuiers objets
 OBJECTS = $(SOURCES:.cpp=.o)
