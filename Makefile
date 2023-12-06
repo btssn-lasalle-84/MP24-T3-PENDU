@@ -1,5 +1,5 @@
 # Nom de l'exécutable
-EXECUTABLE = pendu
+EXECUTABLE = pendu.out
 
 # Compileur
 CXX = g++
@@ -12,6 +12,7 @@ SOURCES = dictionnaire.cpp \
           interfaceJoueurs.cpp \
           jeuPendu.cpp \
           joueur.cpp \
+		  main.cpp
 
 # Fichuiers objets
 OBJECTS = $(SOURCES:.cpp=.o)

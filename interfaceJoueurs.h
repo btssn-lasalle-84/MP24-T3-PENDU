@@ -10,10 +10,12 @@ class InterfaceJoueurs
   public:
     InterfaceJoueurs();
 
-    char demanderLettre() const;
-    void dessinerPendu();
-    void afficherTentatives(int                      tentativesRestantes,
-                            const std::vector<char>& lettresUtilisees) const;
+    void        dessinerPendu();
+    char        demanderLettre() const;
+    void        afficherTentatives(int                      tentativesRestantes,
+                                   const std::vector<char>& lettresUtilisees) const;
+    std::string saisirNomJoueur();
+    void        afficherNomJoueur(const std::string& nom);
 };
 
 #endif // INTERFACE_JOUEURS_H
