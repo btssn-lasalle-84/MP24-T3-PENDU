@@ -2,11 +2,11 @@
 
 #include <iostream>
 
-interfaceJoueurs::interfaceJoueurs()
+InterfaceJoueurs::InterfaceJoueurs()
 {
 }
 
-char interfaceJoueurs::demanderLettre() const
+char InterfaceJoueurs::demanderLettre() const
 {
     char lettreProposee;
     std::cout << "Entrez une lettre : ";
@@ -14,21 +14,18 @@ char interfaceJoueurs::demanderLettre() const
     return lettreProposee;
 }
 
-void interfaceJoueurs::dessinerPendu()
+void InterfaceJoueurs::dessinerPendu()
 {
 }
 
-
-void interfaceJoueurs::afficherTentatives(int tentativesRestantes, const std::vector<char>& lettresUtilisees) const
+void InterfaceJoueurs::afficherTentatives(int                      tentativesRestantes,
+                                          const std::vector<char>& lettresUtilisees) const
 {
     std::cout << "Tentatives restantes : " << tentativesRestantes << std::endl;
     std::cout << "Lettres utilisées : ";
-    for (char lettre : lettresUtilisees) {
+    for(char lettre: lettresUtilisees)
+    {
         std::cout << lettre << " ";
     }
     std::cout << std::endl;
-
-int InterfaceJoueurs::getTentativeRestantes()
-{
-    return tentativesRestantes;
 }
