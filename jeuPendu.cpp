@@ -6,10 +6,11 @@
 
 JeuPendu::JeuPendu(interfaceJoueurs* monInterface,
                    Dictionnaire*     dictionnaire,
+                   Joueur*           monJoueur,
                    std::string&      mot,
                    std::string&      motAtrouver) :
     monInterface(monInterface),
-    dictionnaire(dictionnaire), mot(mot), motAtrouver(motAtrouver)
+    dictionnaire(dictionnaire), monJoueur(monJoueur), mot(mot), motAtrouver(motAtrouver)
 {
 }
 
@@ -18,7 +19,7 @@ std::string JeuPendu::getMot() const
     return mot;
 }
 
-void JeuPendu::setMot(std::string mot)
+void JeuPendu::setMot(const std::string& mot)
 {
     this->mot = mot;
 }

@@ -15,18 +15,19 @@ class JeuPendu
   private:
     interfaceJoueurs* monInterface;
     Dictionnaire*     dictionnaire;
+    Joueur*           monJoueur;
     std::string&      mot;
     std::string&      motAtrouver;
     int               tentativeRestantes = ESSAI;
-    Joueur*           monJoueur;
 
   public:
     JeuPendu(interfaceJoueurs* monInterface,
              Dictionnaire*     dictionnaire,
+             Joueur*           monJoueur,
              std::string&      mot,
              std::string&      motAtrouver);
     std::string getMot() const;
-    void        setMot(std::string mot);
+    void        setMot(const std::string& mot);
     bool        estFinPartie();
     bool        verifierMot();
     void        choisirMot();
