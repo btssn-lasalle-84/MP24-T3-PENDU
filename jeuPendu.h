@@ -1,9 +1,11 @@
 #ifndef JEU_PENDU_H
+
 #define JEU_PENDU_H
+#define ESSAI 9
+
 #include <string>
 #include <vector>
 #include "dictionnaire.h"
-#define ESSAI 9
 
 class Joueur;
 class Dictionnaire;
@@ -18,15 +20,14 @@ class JeuPendu
 
   public:
     JeuPendu(interfaceJoueurs* monInterface, Dictionnaire* dictionnaire, std::string& mot);
-    std::string getMot() const;
+    std::string getMot();
     void        setMot(std::string mot);
-    bool        estFinPartie();
-    bool        verifierMot();
+    bool        estFinPartie() const;
+    bool        verifierMot() const;
     void        jouer();
     void        choisirMot();
-    void relationDictionnaire(Dictionnaire* dictionnaire);
-    void relationInterfaceJoueurs(interfaceJoueurs* monInterface);
-
+    void        relationDictionnaire(Dictionnaire* dictionnaire);
+    void        relationInterfaceJoueurs(interfaceJoueurs* monInterface);
 };
 
 #endif // JEU_PENDU_H
