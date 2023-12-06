@@ -1,16 +1,25 @@
-#include <iostream>
-#include <vector>
-#include "joueur.h"
 #include "jeuPendu.h"
 #include "interfaceJoueurs.h"
+#include "dictionnaire.h"
+#include "joueur.h"
 
-JeuPendu::JeuPendu(interfaceJoueurs* monInterface,
-                   Dictionnaire*     dictionnaire,
-                   std::string&      mot,
-                   std::string&      motAtrouver) :
-    monInterface(monInterface),
-    dictionnaire(dictionnaire), mot(mot), motAtrouver(motAtrouver)
+JeuPendu::JeuPendu() :
+    monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
+    mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX)
 {
+}
+
+void JeuPendu::jouer()
+{
+    choisirMot();
+
+    monJoueur->enregisterNom(monInterface->saisirNomJoueur());
+    monInterface->afficherNomJoueur(monJoueur->getNom());
+}
+
+void JeuPendu::choisirMot()
+{
+    mot = dictionnaire->genererMotSecret();
 }
 
 std::string JeuPendu::getMot() const
@@ -18,51 +27,12 @@ std::string JeuPendu::getMot() const
     return mot;
 }
 
-void JeuPendu::setMot(std::string mot)
+bool JeuPendu::estFinPartie() const
 {
-    this->mot = mot;
+    return (NB_ESSAIS_MAX <= 0);
 }
 
-void JeuPendu::relationDictionnaire(Dictionnaire* dictionnaire)
+bool JeuPendu::verifierMot() const
 {
-    this->dictionnaire = dictionnaire;
-}
-
-void JeuPendu::relationInterfaceJoueurs(interfaceJoueurs* monInterface)
-{
-    this->monInterface = monInterface;
-}
-
-bool JeuPendu::estFinPartie()
-{
-    if(ESSAI <= 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-void JeuPendu::choisirMot()
-{
-    setMot(dictionnaire->genererMotSecret());
-}
-
-bool JeuPendu::verifierMot()
-{
-    if(mot == motAtrouver)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-void JeuPendu::relationJoueur(Joueur* monJoueur)
-{
-    this->monJoueur = monJoueur;
+    return (mot == motAtrouver);
 }
