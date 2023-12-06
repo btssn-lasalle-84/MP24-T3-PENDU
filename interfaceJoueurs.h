@@ -11,8 +11,10 @@ class InterfaceJoueurs
 
   public:
     InterfaceJoueurs();
-    void dessinerPendu();
-    int  getTentativeRestantes();
+    void        dessinerPendu();
+    int         getTentativeRestantes();
+    std::string saisirNomJoueur();
+    void        afficherNomJoueur(const std::string& nom);
 };
 
 #endif // INTERFACE_JOUEUR_H

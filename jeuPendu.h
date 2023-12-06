@@ -1,43 +1,33 @@
 #ifndef JEU_PENDU_H
-
 #define JEU_PENDU_H
-#define ESSAI 9
 
 #include <string>
-#include <vector>
-#include "dictionnaire.h"
 
-#include "joueur.h"
-#define ESSAI 9
+#define NB_ESSAIS_MAX 9
 
-class Joueur;
+class InterfaceJoueurs;
 class Dictionnaire;
-class interfaceJoueurs;
+class Joueur;
 
 class JeuPendu
 {
   private:
-    interfaceJoueurs* monInterface;
+    InterfaceJoueurs* monInterface;
     Dictionnaire*     dictionnaire;
-    std::string&      mot;
-    std::string&      motAtrouver;
-    int               tentativeRestantes = ESSAI;
     Joueur*           monJoueur;
+    std::string       mot;
+    std::string       motAtrouver;
+    int               tentativeRestantes;
 
   public:
-    JeuPendu(interfaceJoueurs* monInterface,
-             Dictionnaire*     dictionnaire,
-             std::string&      mot,
-             std::string&      motAtrouver);
-    std::string getMot() const;
-    void        setMot(std::string mot);
-    bool        estFinPartie();
-    bool        verifierMot();
-    void        choisirMot();
-    void        jouer();
+    JeuPendu();
 
-    void relationDictionnaire(Dictionnaire* dictionnaire);
-    void relationInterfaceJoueurs(interfaceJoueurs* monInterface);
+    void jouer();
+
+    void        choisirMot();
+    std::string getMot() const;
+    bool        estFinPartie() const;
+    bool        verifierMot() const;
 };
 
 #endif // JEU_PENDU_H
