@@ -5,12 +5,12 @@ class Joueur
 {
   private:
     std::string nom;
-    int         tentativesRestantes;
 
   public:
     Joueur(const std::string& nom);
-    void setEnregisterNom(std::string nom);
-    int  getTentativeRestantes();
+    std::string getNom() const;
+    void        setEnregisterNom(std::string nom);
+    void        saisir();
 };
 
 #endif // JOUEUR_H

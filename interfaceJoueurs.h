@@ -2,15 +2,18 @@
 #define INTERFACE_JOUEURS_H
 
 #include <string>
+#include <vector>
 
-class interfaceJoueurs
+class InterfaceJoueurs
 {
-    private :
-    char lettreProposee;
+  private:
+  public:
+    InterfaceJoueurs();
 
-    public :
-    interfaceJoueurs ();
+    char demanderLettre() const;
     void dessinerPendu();
+    void afficherTentatives(int                      tentativesRestantes,
+                            const std::vector<char>& lettresUtilisees) const;
 };
 
-#endif //INTERFACE_JOUEUR_H
+#endif // INTERFACE_JOUEURS_H
