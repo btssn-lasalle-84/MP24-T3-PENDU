@@ -12,9 +12,11 @@ JeuPendu::JeuPendu() :
 void JeuPendu::jouer()
 {
     choisirMot();
-
     monJoueur->enregisterNom(monInterface->saisirNomJoueur());
     monInterface->afficherNomJoueur(monJoueur->getNom());
+    dictionnaire->genererMotSecret();
+    monInterface->demanderLettre();
+    monInterface->dessinerPendu();
 }
 
 void JeuPendu::choisirMot()
