@@ -68,52 +68,70 @@ void JeuPendu::jouer()
 
     std::cout << "\033[0m";
 
-    int choix;
-
+      int choix;
     do
     {
         InterfaceJoueurs::afficherMenu();
         std::cin >> choix;
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         switch(choix)
-
         {
             case 1:
-
                 std::cout << "Lancement d'une nouvelle partie...\n";
                 lancerPartie();
                 break;
             case 2:
-
                 std::cout << "Afficher les scores...\n";
                 break;
             case 3:
-
                 InterfaceJoueurs::quitter();
                 break;
             default:
-
                 std::cout << "Option invalide. Veuillez choisir à nouveau.\n";
+        }
+
+        if (estFinPartie()) 
+        {
+            std::cout << "La partie est terminée.\n";
+            break;
         }
 
     } while(choix != 3);
 }
 
-void JeuPendu::choisirMot()
-{
-    mot = dictionnaire->genererMotSecret();
-}
-
 void JeuPendu::lancerPartie()
 {
     choisirMot();
-
+    
     monJoueur->enregisterNom(monInterface->saisirNomJoueur());
     monInterface->afficherNomJoueur(monJoueur->getNom());
 
-    // TODO déroulement partie
+    while (!estFinPartie())
+    {
+        char lettreProposee = monInterface->demanderLettre();
+
+        if (verrifierLettre(lettreProposee))
+        {
+            if (verifierMot())
+            {
+                std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
+                break;
+            }
+        }
+        else
+        {
+            afficherMotAtrouver();
+            tentativeRestantes--;
+            monInterface->afficherTentatives(tentativeRestantes);
+            monInterface->dessinerPendu();
+        }
+    }
 }
 
+void JeuPendu::choisirMot()
+{   
+    mot = dictionnaire->genererMotSecret();
+}
 std::string JeuPendu::getMot() const
 {
     return mot;
@@ -121,10 +139,35 @@ std::string JeuPendu::getMot() const
 
 bool JeuPendu::estFinPartie() const
 {
-    return (NB_ESSAIS_MAX <= 0);
+    return (tentativeRestantes <= 0 || verifierMot());
 }
 
-bool JeuPendu::verifierMot() const
+bool JeuPendu::verifierMot() const  
 {
     return (mot == motAtrouver);
 }
+
+bool JeuPendu::verrifierLettre(char lettreProposee) 
+{
+    bool trouvee = false;
+    for(unsigned int i = 1; i < mot.length() - 1; i++)
+    {
+        if(lettreProposee == mot[i])
+        {
+            trouvee        = true;
+            motAtrouver[i] = lettreProposee;
+        }
+    }
+
+    if (!trouvee)
+    {
+        motAtrouver = mot[0] + std::string(mot.length() - 2, '-') + mot[mot.length() - 1];
+    }
+
+    return trouvee;
+}
+void JeuPendu::afficherMotAtrouver()
+{
+    std::cout <<motAtrouver <<std::endl;
+}
+
