@@ -14,11 +14,12 @@ class InterfaceJoueurs
     static void quitter();
     static void afficherMenu();
     void        dessinerPendu();
-    char        demanderLettre() const;
+    char        demanderLettre();
     void        afficherTentatives(int tentativesRestantes) const;
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
     void        afficherMotAtrouver(std::string motAtrouver) const;
+     void ajouterLettreUtilisee(char lettre);
 };
 
 #endif // INTERFACE_JOUEURS_H

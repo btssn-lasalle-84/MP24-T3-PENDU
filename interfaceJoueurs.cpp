@@ -27,11 +27,17 @@ void InterfaceJoueurs::dessinerPendu()
 {
 }
 
-char InterfaceJoueurs::demanderLettre() const
+void InterfaceJoueurs::ajouterLettreUtilisee(char lettre) 
+{
+    lettresUtilisees.push_back(lettre);
+}
+
+char InterfaceJoueurs::demanderLettre()
 {
     char lettreProposee;
     std::cout << "Entrez une lettre : ";
     std::cin >> lettreProposee;
+    ajouterLettreUtilisee(lettreProposee);
     return lettreProposee;
 }
 
