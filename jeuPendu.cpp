@@ -2,6 +2,7 @@
 #include "interfaceJoueurs.h"
 #include "dictionnaire.h"
 #include "joueur.h"
+#include <string>
 
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
@@ -47,16 +48,15 @@ bool JeuPendu::verifierMot() const
 
 bool JeuPendu::verrifierLettre(char lettreProposee) const
 {
-    for(int i = 0; motAtrouver[i] != '\0'; i++)
+    for(unsigned i = 1; i < mot.length() - 1; i++)
     {
-        if(lettreProposee == motAtrouver[i])
+        if(lettreProposee == mot[i])
         {
-            return true;
+            return (motAtrouver[i] == mot[i]);
         }
         else
         {
-            return false;
+            return (tentativeRestantes - 1);
         }
     }
-    return 0;
 }
