@@ -15,6 +15,14 @@ void JeuPendu::jouer()
 
     monJoueur->enregisterNom(monInterface->saisirNomJoueur());
     monInterface->afficherNomJoueur(monJoueur->getNom());
+
+    char lettreProposee = monInterface->demanderLettre();
+
+    // TODO verifierLettre puis verifierMot
+
+    monInterface->dessinerPendu();
+
+    monInterface->afficherTentatives(tentativeRestantes);
 }
 
 void JeuPendu::choisirMot()

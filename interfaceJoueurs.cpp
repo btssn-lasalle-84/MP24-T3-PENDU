@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits>
 
-InterfaceJoueurs::InterfaceJoueurs()
+InterfaceJoueurs::InterfaceJoueurs() : lettresUtilisees()
 {
 }
 
@@ -18,8 +18,7 @@ char InterfaceJoueurs::demanderLettre() const
     return lettreProposee;
 }
 
-void InterfaceJoueurs::afficherTentatives(int                      tentativesRestantes,
-                                          const std::vector<char>& lettresUtilisees) const
+void InterfaceJoueurs::afficherTentatives(int tentativesRestantes) const
 {
     std::cout << "Tentatives restantes : " << tentativesRestantes << std::endl;
     std::cout << "Lettres utilisées : ";
