@@ -21,10 +21,13 @@ class JeuPendu
 
   public:
     JeuPendu();
+    ~JeuPendu();
+    JeuPendu(const JeuPendu& other);
+    JeuPendu& operator=(const JeuPendu& other);
 
-    void jouer();
-
+    void        jouer();
     void        choisirMot();
+    void        lancerPartie();
     std::string getMot() const;
     bool        estFinPartie() const;
     bool        verifierMot() const;
