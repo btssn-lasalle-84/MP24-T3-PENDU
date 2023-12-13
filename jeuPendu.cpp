@@ -20,10 +20,15 @@ void JeuPendu::jouer()
     char lettreProposee = monInterface->demanderLettre();
 
     // TODO verifierLettre puis verifierMot
-
-    monInterface->dessinerPendu();
-
-    monInterface->afficherTentatives(tentativeRestantes);
+    if(verrifierLettre(lettreProposee))
+    {
+        verifierMot();
+    }
+    else
+    {
+        monInterface->afficherTentatives(tentativeRestantes);
+        monInterface->dessinerPendu();
+    }
 }
 
 void JeuPendu::choisirMot()
@@ -46,17 +51,16 @@ bool JeuPendu::verifierMot() const
     return (mot == motAtrouver);
 }
 
-bool JeuPendu::verrifierLettre(char lettreProposee) const
+bool JeuPendu::verrifierLettre(char lettreProposee)
 {
-    for(unsigned i = 1; i < mot.length() - 1; i++)
+    bool trouvee = false;
+    for(unsigned int i = 1; i < mot.length() - 1; i++)
     {
         if(lettreProposee == mot[i])
         {
-            return (motAtrouver[i] == mot[i]);
-        }
-        else
-        {
-            return (tentativeRestantes - 1);
+            trouvee        = true;
+            motAtrouver[i] = lettreProposee;
         }
     }
+    return trouvee;
 }
