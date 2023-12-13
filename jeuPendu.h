@@ -27,6 +27,7 @@ class JeuPendu
     void        choisirMot();
     std::string getMot() const;
     bool        estFinPartie() const;
+    bool        verrifierLettre() const;
     bool        verifierMot() const;
 };
 

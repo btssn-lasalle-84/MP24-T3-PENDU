@@ -44,3 +44,13 @@ bool JeuPendu::verifierMot() const
 {
     return (mot == motAtrouver);
 }
+
+bool JeuPendu::verrifierLettre() const
+{
+    char lettre;
+    for(char lettre: motAtrouver)
+    {
+        motAtrouver[lettre];
+    }
+    return (motAtrouver[lettre] == mot[lettre]);
+}
