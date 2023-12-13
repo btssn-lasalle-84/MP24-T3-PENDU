@@ -1,9 +1,26 @@
 #include "interfaceJoueurs.h"
+#include "jeuPendu.h"
 #include <iostream>
 #include <limits>
 
 InterfaceJoueurs::InterfaceJoueurs()
 {
+}
+
+void InterfaceJoueurs::afficherMenu()
+{
+    std::cout << "******************************\n";
+    std::cout << "**   1. Nouvelle partie     **\n";
+    std::cout << "**   2. Scores              **\n";
+    std::cout << "**   3. Quitter             **\n";
+    std::cout << "******************************\n";
+    std::cout << "Choisissez une option : ";
+}
+
+void InterfaceJoueurs::quitter()
+{
+    std::cout << "Bye Bye, Merci d'avoir joué.\n";
+    exit(0);
 }
 
 void InterfaceJoueurs::dessinerPendu()
@@ -36,7 +53,7 @@ std::string InterfaceJoueurs::saisirNomJoueur()
 
     do
     {
-        std::cout << "Nom du joueur ? ";
+        std::cout << "Nom du joueur : ";
         std::cin >> std::ws; // Ignorer les espaces blancs avant la saisie
         getline(std::cin, nom);
 

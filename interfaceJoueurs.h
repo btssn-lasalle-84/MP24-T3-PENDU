@@ -3,13 +3,14 @@
 
 #include <string>
 #include <vector>
-
 class InterfaceJoueurs
 {
   private:
   public:
     InterfaceJoueurs();
 
+    static void quitter();
+    static void afficherMenu();
     void        dessinerPendu();
     char        demanderLettre() const;
     void        afficherTentatives(int                      tentativesRestantes,
