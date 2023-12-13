@@ -18,6 +18,7 @@ class InterfaceJoueurs
     void        afficherTentatives(int tentativesRestantes) const;
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
+    void        afficherMotAtrouver(std::string motAtrouver) const;
 };
 
 #endif // INTERFACE_JOUEURS_H
