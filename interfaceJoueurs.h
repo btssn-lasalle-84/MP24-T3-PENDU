@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-
 class InterfaceJoueurs
 {
   private:
@@ -12,11 +11,14 @@ class InterfaceJoueurs
   public:
     InterfaceJoueurs();
 
+    static void quitter();
+    static void afficherMenu();
     void        dessinerPendu();
     char        demanderLettre() const;
     void        afficherTentatives(int tentativesRestantes) const;
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
+    void        afficherMotAtrouver(std::string motAtrouver) const;
 };
 
 #endif // INTERFACE_JOUEURS_H
