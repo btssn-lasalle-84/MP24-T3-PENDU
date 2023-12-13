@@ -45,12 +45,18 @@ bool JeuPendu::verifierMot() const
     return (mot == motAtrouver);
 }
 
-bool JeuPendu::verrifierLettre() const
+bool JeuPendu::verrifierLettre(char lettreProposee) const
 {
-    char lettre;
-    for(char lettre: motAtrouver)
+    for(int i = 0; motAtrouver[i] != '\0'; i++)
     {
-        motAtrouver[lettre];
+        if(lettreProposee == motAtrouver[i])
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-    return (motAtrouver[lettre] == mot[lettre]);
+    return 0;
 }
