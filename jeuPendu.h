@@ -32,7 +32,7 @@ class JeuPendu
     std::string getMot() const;
     bool        estFinPartie() const;
     bool        verifierMot() const;
-    bool        verrifierLettre(char lettreProposee);
+    bool        verifierLettre(char lettreProposee);
     void        afficherMotAtrouver();
 };
 
