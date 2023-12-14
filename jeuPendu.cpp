@@ -18,85 +18,35 @@ JeuPendu::~JeuPendu()
     delete monJoueur;
 }
 
-JeuPendu::JeuPendu(const JeuPendu& other) :
-    monInterface(new InterfaceJoueurs(*(other.monInterface))),
-    dictionnaire(new Dictionnaire(*(other.dictionnaire))),
-    monJoueur(new Joueur(*(other.monJoueur))), mot(other.mot), motAtrouver(other.motAtrouver),
-    tentativeRestantes(other.tentativeRestantes)
+JeuPendu::JeuPendu(const JeuPendu& jeuPendu) :
+    monInterface(new InterfaceJoueurs(*(jeuPendu.monInterface))),
+    dictionnaire(new Dictionnaire(*(jeuPendu.dictionnaire))),
+    monJoueur(new Joueur(*(jeuPendu.monJoueur))), mot(jeuPendu.mot),
+    motAtrouver(jeuPendu.motAtrouver), tentativeRestantes(jeuPendu.tentativeRestantes)
 {
 }
 
-JeuPendu& JeuPendu::operator=(const JeuPendu& other)
+JeuPendu& JeuPendu::operator=(const JeuPendu& jeuPendu)
 {
-    if(this != &other)
+    if(this != &jeuPendu)
     {
         delete monInterface;
         delete dictionnaire;
         delete monJoueur;
 
-        monInterface       = new InterfaceJoueurs(*(other.monInterface));
-        dictionnaire       = new Dictionnaire(*(other.dictionnaire));
-        monJoueur          = new Joueur(*(other.monJoueur));
-        mot                = other.mot;
-        motAtrouver        = other.motAtrouver;
-        tentativeRestantes = other.tentativeRestantes;
+        monInterface       = new InterfaceJoueurs(*(jeuPendu.monInterface));
+        dictionnaire       = new Dictionnaire(*(jeuPendu.dictionnaire));
+        monJoueur          = new Joueur(*(jeuPendu.monJoueur));
+        mot                = jeuPendu.mot;
+        motAtrouver        = jeuPendu.motAtrouver;
+        tentativeRestantes = jeuPendu.tentativeRestantes;
     }
     return *this;
 }
 
 void JeuPendu::jouer()
 {
-    std::cout << "\033[1;31m";
-
-    std::cout << "_________ _______             ______   _______    _______  _______  _        "
-                 "______           \n";
-    std::cout << "\\__    _/(  ____ \\|\\     /|  (  __  \\ (  ____ \\  (  ____ )(  ____ )( (    "
-                 "/|(  __  \\ |\\     /|\n";
-    std::cout << "   )  (  | (    \\/| )   ( |  | (  \\  )| (    \\/  | (    )|| (    \\/|  \\  ( "
-                 "|| (  \\  )| )   ( |\n";
-    std::cout << "   |  |  | (__    | |   | |  | |   ) || (__      | (____)|| (__    |   \\ | || | "
-                 "  ) || |   | |\n";
-    std::cout << "   |  |  |  __)   | |   | |  | |   | ||  __)     |  _____)|  __)   | (\\ \\) || "
-                 "|   | || |   | |\n";
-    std::cout << "   |  |  | (      | |   | |  | |   ) || (        | (      | (      | | \\   || | "
-                 "  ) || |   | |\n";
-    std::cout << "|\\_)  )  | (____/\\| (___) |  | (__/  )| (____/\\  | )      | (____/\\| )  \\  "
-                 "|| (__/  )| (___) |\n";
-    std::cout << "(____/   (_______/(_______)  (______/ (_______/  |/       (_______/|/    "
-                 ")_)(______/ (_______)\n";
-    std::cout << "\n\n" << std::endl;
-
-    std::cout << "\033[0m";
-
-    int choix;
-
-    do
-    {
-        InterfaceJoueurs::afficherMenu();
-        std::cin >> choix;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        switch(choix)
-
-        {
-            case 1:
-
-                std::cout << "Lancement d'une nouvelle partie...\n";
-                lancerPartie();
-                break;
-            case 2:
-
-                std::cout << "Afficher les scores...\n";
-                break;
-            case 3:
-
-                InterfaceJoueurs::quitter();
-                break;
-            default:
-
-                std::cout << "Option invalide. Veuillez choisir à nouveau.\n";
-        }
-
-    } while(choix != 3);
+    monInterface->afficherMenu(*this);
 }
 
 void JeuPendu::choisirMot()

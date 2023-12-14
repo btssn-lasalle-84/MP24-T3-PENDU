@@ -3,14 +3,16 @@
 
 #include <string>
 #include <vector>
+
+class JeuPendu;
 class InterfaceJoueurs
 {
   private:
   public:
     InterfaceJoueurs();
 
-    static void quitter();
-    static void afficherMenu();
+    void        quitter();
+    void        afficherMenu(JeuPendu& jeuPendu);
     void        dessinerPendu();
     char        demanderLettre() const;
     void        afficherTentatives(int                      tentativesRestantes,

@@ -7,14 +7,61 @@ InterfaceJoueurs::InterfaceJoueurs()
 {
 }
 
-void InterfaceJoueurs::afficherMenu()
+void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 {
-    std::cout << "******************************\n";
-    std::cout << "**   1. Nouvelle partie     **\n";
-    std::cout << "**   2. Scores              **\n";
-    std::cout << "**   3. Quitter             **\n";
-    std::cout << "******************************\n";
+    int choix;
+
+    std::cout << "\033[1;31m";
+
+    std::cout << "_________ _______             ______   _______    _______  _______  _        "
+                 "______           \n";
+    std::cout << "\\__    _/(  ____ \\|\\     /|  (  __  \\ (  ____ \\  (  ____ )(  ____ )( (    "
+                 "/|(  __  \\ |\\     /|\n";
+    std::cout << "   )  (  | (    \\/| )   ( |  | (  \\  )| (    \\/  | (    )|| (    \\/|  \\  ( "
+                 "|| (  \\  )| )   ( |\n";
+    std::cout << "   |  |  | (__    | |   | |  | |   ) || (__      | (____)|| (__    |   \\ | || | "
+                 "  ) || |   | |\n";
+    std::cout << "   |  |  |  __)   | |   | |  | |   | ||  __)     |  _____)|  __)   | (\\ \\) || "
+                 "|   | || |   | |\n";
+    std::cout << "   |  |  | (      | |   | |  | |   ) || (        | (      | (      | | \\   || | "
+                 "  ) || |   | |\n";
+    std::cout << "|\\_)  )  | (____/\\| (___) |  | (__/  )| (____/\\  | )      | (____/\\| )  \\  "
+                 "|| (__/  )| (___) |\n";
+    std::cout << "(____/   (_______/(_______)  (______/ (_______/  |/       (_______/|/    "
+                 ")_)(______/ (_______)\n";
+    std::cout << "\n\n" << std::endl;
+
+    std::cout << "\033[0m";
+
+    std::cout << "****************************\n";
+    std::cout << "**   1. Nouvelle partie   **\n";
+    std::cout << "**   2. Scores            **\n";
+    std::cout << "**   3. Quitter           **\n";
+    std::cout << "****************************\n";
     std::cout << "Choisissez une option : ";
+
+    std::cin >> choix;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    switch(choix)
+        do
+        {
+            case 1:
+
+                std::cout << "Lancement d'une nouvelle partie...\n";
+                jeuPendu.lancerPartie();
+                break;
+            case 2:
+
+                std::cout << "Afficher les scores...\n";
+                break;
+            case 3:
+
+                quitter();
+                break;
+            default:
+
+                std::cout << "Option invalide. Veuillez choisir à nouveau.\n";
+        } while(choix != 3);
 }
 
 void InterfaceJoueurs::quitter()
