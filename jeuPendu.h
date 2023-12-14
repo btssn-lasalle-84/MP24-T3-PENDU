@@ -3,7 +3,7 @@
 
 #include <string>
 
-#define NB_ESSAIS_MAX 9
+#define NB_ESSAIS_MAX 11
 
 class InterfaceJoueurs;
 class Dictionnaire;
