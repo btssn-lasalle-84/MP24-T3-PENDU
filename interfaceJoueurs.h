@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+
+class JeuPendu;
 class InterfaceJoueurs
 {
   private:
@@ -11,11 +13,13 @@ class InterfaceJoueurs
   public:
     InterfaceJoueurs();
 
-    static void quitter();
-    static void afficherMenu();
-    void        dessinerPendu(int tentativesRestantes);
-    char        demanderLettre();
-    void        afficherTentatives(int tentativesRestantes) const;
+
+    void        quitter();
+    void        afficherMenu(JeuPendu& jeuPendu);
+    void        dessinerPendu();
+    char        demanderLettre() const;
+    void        afficherTentatives(int                      tentativesRestantes,
+                                   const std::vector<char>& lettresUtilisees) const;
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
     void        afficherMotAtrouver(std::string motAtrouver) const;
