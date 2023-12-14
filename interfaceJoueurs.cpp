@@ -2,19 +2,67 @@
 #include "jeuPendu.h"
 #include <iostream>
 #include <limits>
+#include <iomanip>
 
 InterfaceJoueurs::InterfaceJoueurs() : lettresUtilisees()
 {
 }
 
-void InterfaceJoueurs::afficherMenu()
+void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 {
-    std::cout << "******************************\n";
-    std::cout << "**   1. Nouvelle partie     **\n";
-    std::cout << "**   2. Scores              **\n";
-    std::cout << "**   3. Quitter             **\n";
-    std::cout << "******************************\n";
+    int choix;
+
+    std::cout << "\033[1;31m";
+
+    std::cout << "_________ _______             ______   _______    _______  _______  _        "
+                 "______           \n";
+    std::cout << "\\__    _/(  ____ \\|\\     /|  (  __  \\ (  ____ \\  (  ____ )(  ____ )( (    "
+                 "/|(  __  \\ |\\     /|\n";
+    std::cout << "   )  (  | (    \\/| )   ( |  | (  \\  )| (    \\/  | (    )|| (    \\/|  \\  ( "
+                 "|| (  \\  )| )   ( |\n";
+    std::cout << "   |  |  | (__    | |   | |  | |   ) || (__      | (____)|| (__    |   \\ | || | "
+                 "  ) || |   | |\n";
+    std::cout << "   |  |  |  __)   | |   | |  | |   | ||  __)     |  _____)|  __)   | (\\ \\) || "
+                 "|   | || |   | |\n";
+    std::cout << "   |  |  | (      | |   | |  | |   ) || (        | (      | (      | | \\   || | "
+                 "  ) || |   | |\n";
+    std::cout << "|\\_)  )  | (____/\\| (___) |  | (__/  )| (____/\\  | )      | (____/\\| )  \\  "
+                 "|| (__/  )| (___) |\n";
+    std::cout << "(____/   (_______/(_______)  (______/ (_______/  |/       (_______/|/    "
+                 ")_)(______/ (_______)\n";
+    std::cout << "\n\n" << std::endl;
+
+    std::cout << "\033[0m";
+
+    std::cout << "****************************\n";
+    std::cout << "**   1. Nouvelle partie   **\n";
+    std::cout << "**   2. Scores            **\n";
+    std::cout << "**   3. Quitter           **\n";
+    std::cout << "****************************\n";
     std::cout << "Choisissez une option : ";
+
+    std::cin >> choix;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    switch(choix)
+        do
+        {
+            case 1:
+
+                std::cout << "Lancement d'une nouvelle partie...\n";
+                jeuPendu.lancerPartie();
+                break;
+            case 2:
+
+                std::cout << "Afficher les scores...\n";
+                break;
+            case 3:
+
+                quitter();
+                break;
+            default:
+
+                std::cout << "Option invalide. Veuillez choisir à nouveau.\n";
+        } while(choix != 3);
 }
 
 void InterfaceJoueurs::quitter()
@@ -23,11 +71,7 @@ void InterfaceJoueurs::quitter()
     exit(0);
 }
 
-void InterfaceJoueurs::dessinerPendu()
-{
-}
-
-void InterfaceJoueurs::ajouterLettreUtilisee(char lettre) 
+void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
 {
     lettresUtilisees.push_back(lettre);
 }
@@ -50,6 +94,133 @@ void InterfaceJoueurs::afficherTentatives(int tentativesRestantes) const
         std::cout << lettre << " ";
     }
     std::cout << std::endl;
+}
+
+void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
+{
+    if(tentativesRestantes == 10)
+    {
+        std::cout << std::setfill('\n') << std::setw(6) << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 9)
+    {
+        std::cout << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 8)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 7)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|"
+                  << "/" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 6)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|"
+                  << "/" << std::setfill(' ') << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 5)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|"
+                  << "/" << std::setfill(' ') << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setw(7) << 'O' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 4)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|"
+                  << "/" << std::setfill(' ') << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setw(7) << 'O' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(7)
+                  << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 3)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|"
+                  << "/" << std::setfill(' ') << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setw(7) << 'O' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(7)
+                  << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setw(6) << '/' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 2)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|"
+                  << "/" << std::setfill(' ') << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setw(7) << 'O' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(7)
+                  << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setw(6) << '/' << ' ' << '\\'
+                  << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 1)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '/' << std::setfill(' ')
+                  << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(6)
+                  << '\\' << 'O' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(7)
+                  << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(6)
+                  << '/' << ' ' << '\\' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
+    if(tentativesRestantes == 0)
+    {
+        std::cout << std::setfill(' ') << std::setw(13) << "_________" << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '/' << std::setfill(' ')
+                  << std::setw(6) << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(6)
+                  << '\\' << 'O' << '/' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(7)
+                  << '|' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << std::setfill(' ') << std::setw(6)
+                  << '/' << ' ' << '\\' << '\n';
+        std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
+        std::cout << std::setfill('-') << std::setw(11) << '\n';
+    }
 }
 
 std::string InterfaceJoueurs::saisirNomJoueur()
