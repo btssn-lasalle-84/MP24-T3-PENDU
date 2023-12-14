@@ -8,8 +8,11 @@ class JeuPendu;
 class InterfaceJoueurs
 {
   private:
+    std::vector<char> lettresUtilisees;
+
   public:
     InterfaceJoueurs();
+
 
     void        quitter();
     void        afficherMenu(JeuPendu& jeuPendu);
@@ -19,6 +22,8 @@ class InterfaceJoueurs
                                    const std::vector<char>& lettresUtilisees) const;
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
+    void        afficherMotAtrouver(std::string motAtrouver) const;
+    void        ajouterLettreUtilisee(char lettre);
 };
 
 #endif // INTERFACE_JOUEURS_H

@@ -3,7 +3,7 @@
 
 #include <string>
 
-#define NB_ESSAIS_MAX 9
+#define NB_ESSAIS_MAX 11
 
 class InterfaceJoueurs;
 class Dictionnaire;
@@ -18,6 +18,7 @@ class JeuPendu
     std::string       mot;
     std::string       motAtrouver;
     int               tentativeRestantes;
+    char              lettreProposee;
 
   public:
     JeuPendu();
@@ -31,6 +32,8 @@ class JeuPendu
     std::string getMot() const;
     bool        estFinPartie() const;
     bool        verifierMot() const;
+    bool        verrifierLettre(char lettreProposee);
+    void        afficherMotAtrouver();
 };
 
 #endif // JEU_PENDU_H
