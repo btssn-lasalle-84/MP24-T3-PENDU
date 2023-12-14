@@ -19,7 +19,7 @@ class InterfaceJoueurs
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
     void        afficherMotAtrouver(std::string motAtrouver) const;
-     void ajouterLettreUtilisee(char lettre);
+    void        ajouterLettreUtilisee(char lettre);
 };
 
 #endif // INTERFACE_JOUEURS_H
