@@ -123,7 +123,7 @@ void JeuPendu::lancerPartie()
             afficherMotAtrouver();
             tentativeRestantes--;
             monInterface->afficherTentatives(tentativeRestantes);
-            monInterface->dessinerPendu();
+            monInterface->dessinerPendu(tentativeRestantes);
         }
     }
 }
