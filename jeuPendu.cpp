@@ -61,7 +61,7 @@ void JeuPendu::lancerPartie()
     {
         char lettreProposee = monInterface->demanderLettre();
 
-        if(verrifierLettre(lettreProposee))
+        if(verifierLettre(lettreProposee))
         {
             if(verifierMot())
             {
@@ -81,7 +81,9 @@ void JeuPendu::lancerPartie()
 void JeuPendu::choisirMot()
 {
     mot = dictionnaire->genererMotSecret();
+   
 }
+
 std::string JeuPendu::getMot() const
 {
     return mot;
@@ -97,21 +99,24 @@ bool JeuPendu::verifierMot() const
     return (mot == motAtrouver);
 }
 
-bool JeuPendu::verrifierLettre(char lettreProposee)
+bool JeuPendu::verifierLettre(char lettreProposee)
 {
     bool trouvee = false;
-    for(unsigned int i = 1; i < mot.length() - 1; i++)
+    for (unsigned int i = 1; i < mot.length() - 1; i++)
     {
-        if(lettreProposee == mot[i])
+        if (lettreProposee == mot[i])
         {
-            trouvee        = true;
+            trouvee = true;
             motAtrouver[i] = lettreProposee;
         }
     }
     return trouvee;
 }
+
 void JeuPendu::afficherMotAtrouver()
 {
     motAtrouver = mot[0] + std::string(mot.length() - 2, '-') + mot[mot.length() - 1];
     std::cout << "Le mot à trouver est : " << motAtrouver << std::endl;
 }
+
+
