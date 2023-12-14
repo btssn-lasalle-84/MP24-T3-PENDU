@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Dictionnaire::Dictionnaire() : listeMots({ "mot", "poil", "maman", "bonnet" })
+Dictionnaire::Dictionnaire() : listeMots({ "letu", "poil", "maman", "bonnet" })
 {
 }
 
@@ -20,4 +20,3 @@ std::string Dictionnaire::genererMotSecret() const
 
     return listeMots[numeroMot];
 }
-

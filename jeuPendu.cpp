@@ -52,17 +52,18 @@ void JeuPendu::jouer()
 void JeuPendu::lancerPartie()
 {
     choisirMot();
-    
+
     monJoueur->enregisterNom(monInterface->saisirNomJoueur());
     monInterface->afficherNomJoueur(monJoueur->getNom());
+    afficherMotAtrouver();
 
-    while (!estFinPartie())
+    while(!estFinPartie())
     {
         char lettreProposee = monInterface->demanderLettre();
 
-        if (verrifierLettre(lettreProposee))
+        if(verrifierLettre(lettreProposee))
         {
-            if (verifierMot())
+            if(verifierMot())
             {
                 std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
                 break;
@@ -70,7 +71,6 @@ void JeuPendu::lancerPartie()
         }
         else
         {
-            afficherMotAtrouver();
             tentativeRestantes--;
             monInterface->afficherTentatives(tentativeRestantes);
             monInterface->dessinerPendu(tentativeRestantes);
@@ -79,7 +79,7 @@ void JeuPendu::lancerPartie()
 }
 
 void JeuPendu::choisirMot()
-{   
+{
     mot = dictionnaire->genererMotSecret();
 }
 std::string JeuPendu::getMot() const
@@ -92,12 +92,12 @@ bool JeuPendu::estFinPartie() const
     return (tentativeRestantes <= 0 || verifierMot());
 }
 
-bool JeuPendu::verifierMot() const  
+bool JeuPendu::verifierMot() const
 {
     return (mot == motAtrouver);
 }
 
-bool JeuPendu::verrifierLettre(char lettreProposee) 
+bool JeuPendu::verrifierLettre(char lettreProposee)
 {
     bool trouvee = false;
     for(unsigned int i = 1; i < mot.length() - 1; i++)
@@ -108,16 +108,10 @@ bool JeuPendu::verrifierLettre(char lettreProposee)
             motAtrouver[i] = lettreProposee;
         }
     }
-
-    if (!trouvee)
-    {
-        motAtrouver = mot[0] + std::string(mot.length() - 2, '-') + mot[mot.length() - 1];
-    }
-
     return trouvee;
 }
 void JeuPendu::afficherMotAtrouver()
 {
-    std::cout <<motAtrouver <<std::endl;
+    motAtrouver = mot[0] + std::string(mot.length() - 2, '-') + mot[mot.length() - 1];
+    std::cout << "Le mot à trouver est : " << motAtrouver << std::endl;
 }
-
