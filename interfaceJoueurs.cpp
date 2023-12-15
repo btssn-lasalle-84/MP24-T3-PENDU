@@ -257,3 +257,8 @@ void InterfaceJoueurs::afficherNomJoueur(const std::string& nom)
 {
     std::cout << "Bienvenue " << nom << std::endl;
 }
+
+void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
+{
+    std::cout << "Le mot à trouver : " << motATrouver << std::endl;
+}

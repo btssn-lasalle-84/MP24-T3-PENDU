@@ -4,6 +4,8 @@
 #include "interfaceJoueurs.h"
 #include "dictionnaire.h"
 #include "joueur.h"
+#include <ctime>
+#include <cstdlib>
 
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
@@ -52,13 +54,14 @@ void JeuPendu::jouer()
 void JeuPendu::lancerPartie()
 {
     choisirMot();
+    genererMotAtrouver();
 
     monJoueur->enregisterNom(monInterface->saisirNomJoueur());
     monInterface->afficherNomJoueur(monJoueur->getNom());
-    afficherMotAtrouver();
 
     while(!estFinPartie())
     {
+        monInterface->afficherMotATrouver(motAtrouver);
         char lettreProposee = monInterface->demanderLettre();
 
         if(verifierLettre(lettreProposee))
@@ -66,6 +69,7 @@ void JeuPendu::lancerPartie()
             if(verifierMot())
             {
                 std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
+                monInterface->quitter();
                 break;
             }
         }
@@ -81,7 +85,11 @@ void JeuPendu::lancerPartie()
 
 void JeuPendu::choisirMot()
 {
-    mot = dictionnaire->genererMotSecret();
+    std::srand(std::time(0));
+
+    int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
+  
+    mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
 std::string JeuPendu::getMot() const
@@ -108,13 +116,17 @@ bool JeuPendu::verifierLettre(char lettreProposee)
         {
             trouvee        = true;
             motAtrouver[i] = lettreProposee;
+            std::cout << "Bien joué la lettre est dans le mot" << std::endl;
         }
     }
     return trouvee;
 }
 
-void JeuPendu::afficherMotAtrouver()
+void JeuPendu::genererMotAtrouver()
 {
-    motAtrouver = mot[0] + std::string(mot.length() - 2, '-') + mot[mot.length() - 1];
-    std::cout << "Le mot à trouver est : " << motAtrouver << std::endl;
+    motAtrouver = mot[0] + std::string(mot.length() - 2, '_') + mot[mot.length() - 1];
+#ifdef DEBUG_JEU_PENDU
+    std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
+    std::cout << " - motAtrouver : " << motAtrouver << std::endl;
+#endif
 }

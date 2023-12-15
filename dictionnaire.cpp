@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Dictionnaire::Dictionnaire() : listeMots({ "letu", "poil", "maman", "bonnet" })
+Dictionnaire::Dictionnaire() : listeMots({ "chaussette", "poil", "maman", "bonnet" })
 {
 }
 

@@ -7,12 +7,11 @@
 class Dictionnaire
 {
   private:
-    std::vector<std::string> listeMots;
-
   public:
     Dictionnaire();
-    void        charger();
-    std::string genererMotSecret() const;
+    void                     charger();
+    std::string              genererMotSecret() const;
+    std::vector<std::string> listeMots;
 };
 
 #endif // DICTIONNAIRE_H
