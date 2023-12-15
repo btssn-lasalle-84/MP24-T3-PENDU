@@ -14,22 +14,30 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 
     std::cout << "\033[1;31m";
 
-    std::cout << "_________ _______             ______   _______    _______  _______  _        "
-                 "______           \n";
-    std::cout << "\\__    _/(  ____ \\|\\     /|  (  __  \\ (  ____ \\  (  ____ )(  ____ )( (    "
-                 "/|(  __  \\ |\\     /|\n";
-    std::cout << "   )  (  | (    \\/| )   ( |  | (  \\  )| (    \\/  | (    )|| (    \\/|  \\  ( "
-                 "|| (  \\  )| )   ( |\n";
-    std::cout << "   |  |  | (__    | |   | |  | |   ) || (__      | (____)|| (__    |   \\ | || | "
-                 "  ) || |   | |\n";
-    std::cout << "   |  |  |  __)   | |   | |  | |   | ||  __)     |  _____)|  __)   | (\\ \\) || "
-                 "|   | || |   | |\n";
-    std::cout << "   |  |  | (      | |   | |  | |   ) || (        | (      | (      | | \\   || | "
-                 "  ) || |   | |\n";
-    std::cout << "|\\_)  )  | (____/\\| (___) |  | (__/  )| (____/\\  | )      | (____/\\| )  \\  "
-                 "|| (__/  )| (___) |\n";
-    std::cout << "(____/   (_______/(_______)  (______/ (_______/  |/       (_______/|/    "
-                 ")_)(______/ (_______)\n";
+    std::cout << "_________ _______             ______              _______  _______  _        "
+                 "______           "
+              << std::endl;
+    std::cout << "\\__    _/(  ____ \\|\\     /|  (  __  \\ |\\     /|  (  ____ )(  ____ \\( (    "
+                 "/|(  __  \\ |\\     /|"
+              << std::endl;
+    std::cout << "   )  (  | (    \\/| )   ( |  | (  \\  )| )   ( |  | (    )|| (    \\/|  \\  ( "
+                 "|| (  \\  )| )   ( |"
+              << std::endl;
+    std::cout << "   |  |  | (__    | |   | |  | |   ) || |   | |  | (____)|| (__    |   \\ | || | "
+                 "  ) || |   | |"
+              << std::endl;
+    std::cout << "   |  |  |  __)   | |   | |  | |   | || |   | |  |  _____)|  __)   | (\\ \\) || "
+                 "|   | || |   | |"
+              << std::endl;
+    std::cout << "   |  |  | (      | |   | |  | |   ) || |   | |  | (      | (      | | \\   || | "
+                 "  ) || |   | |"
+              << std::endl;
+    std::cout << "|\\_)  )  | (____/\\| (___) |  | (__/  )| (___) |  | )      | (____/\\| )  \\  "
+                 "|| (__/  )| (___) |"
+              << std::endl;
+    std::cout << "(____/   (_______/(_______)  (______/ (_______)  |/       (_______/|/    "
+                 ")_)(______/ (_______)"
+              << std::endl;
     std::cout << "\n\n" << std::endl;
 
     std::cout << "\033[0m";
@@ -43,10 +51,10 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 
     std::cin >> choix;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  
+
     do
     {
-      switch (choix)
+        switch(choix)
         {
             case 1:
                 std::cout << "Lancement d'une nouvelle partie...\n";
@@ -62,7 +70,7 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
                 std::cout << "Option invalide. Veuillez choisir à nouveau.\n";
         }
 
-    } while (choix != 3);
+    } while(choix != 3);
 }
 
 void InterfaceJoueurs::quitter()
@@ -70,13 +78,13 @@ void InterfaceJoueurs::quitter()
     std::cout << "Bye Bye, Merci d'avoir joué.\n";
     exit(0);
 }
- 
-void InterfaceJoueurs::ajouterLettreUtilisee(char lettre) 
+
+void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
 {
     lettresUtilisees.push_back(lettre);
 }
 
-char InterfaceJoueurs::demanderLettre() 
+char InterfaceJoueurs::demanderLettre()
 {
     char lettreProposee;
     std::cout << "Entrez une lettre : ";

@@ -9,17 +9,17 @@ class InterfaceJoueurs
 {
   private:
     std::vector<char> lettresUtilisees;
-    
+
   public:
     InterfaceJoueurs();
     void        quitter();
     void        afficherMenu(JeuPendu& jeuPendu);
-    char demanderLettre();
-    void afficherTentatives(int tentativesRestantes);
-    void dessinerPendu(int tentativesRestantes);
+    char        demanderLettre();
+    void        afficherTentatives(int tentativesRestantes);
+    void        dessinerPendu(int tentativesRestantes);
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
-    void ajouterLettreUtilisee(char lettre); 
+    void        ajouterLettreUtilisee(char lettre);
 };
 
 #endif // INTERFACE_JOUEURS_H
