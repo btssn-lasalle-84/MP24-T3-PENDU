@@ -43,10 +43,10 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 
     std::cin >> choix;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-  
+
     do
     {
-      switch (choix)
+        switch(choix)
         {
             case 1:
                 std::cout << "Lancement d'une nouvelle partie...\n";
@@ -62,7 +62,7 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
                 std::cout << "Option invalide. Veuillez choisir à nouveau.\n";
         }
 
-    } while (choix != 3);
+    } while(choix != 3);
 }
 
 void InterfaceJoueurs::quitter()
@@ -70,13 +70,13 @@ void InterfaceJoueurs::quitter()
     std::cout << "Bye Bye, Merci d'avoir joué.\n";
     exit(0);
 }
- 
-void InterfaceJoueurs::ajouterLettreUtilisee(char lettre) 
+
+void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
 {
     lettresUtilisees.push_back(lettre);
 }
 
-char InterfaceJoueurs::demanderLettre() 
+char InterfaceJoueurs::demanderLettre()
 {
     char lettreProposee;
     std::cout << "Entrez une lettre : ";
@@ -248,4 +248,9 @@ std::string InterfaceJoueurs::saisirNomJoueur()
 void InterfaceJoueurs::afficherNomJoueur(const std::string& nom)
 {
     std::cout << "Bienvenue " << nom << std::endl;
+}
+
+void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
+{
+    std::cout << "Le mot à trouver : " << motATrouver << std::endl;
 }

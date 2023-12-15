@@ -5,6 +5,8 @@
 
 #define NB_ESSAIS_MAX 11
 
+//#define DEBUG_JEU_PENDU
+
 class InterfaceJoueurs;
 class Dictionnaire;
 class Joueur;
@@ -33,7 +35,7 @@ class JeuPendu
     bool        estFinPartie() const;
     bool        verifierMot() const;
     bool        verifierLettre(char lettreProposee);
-    void        afficherMotAtrouver();
+    void        genererMotAtrouver();
 };
 
 #endif // JEU_PENDU_H
