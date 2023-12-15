@@ -80,17 +80,15 @@ void JeuPendu::lancerPartie()
             monInterface->dessinerPendu(tentativeRestantes);
         }
     }
+    monInterface->quitter();
 }
 
 void JeuPendu::choisirMot()
 {
-    // Initialisez le générateur de nombres aléatoires avec le temps actuel
     std::srand(std::time(0));
 
-    // Génère un indice aléatoire
     int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
-
-    // Affecte le mot correspondant à l'indice aléatoire à la variable mot
+  
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
