@@ -66,6 +66,9 @@ void JeuPendu::lancerPartie()
 
         if(verifierLettre(lettreProposee))
         {
+            std::cout << std::endl;
+            std::cout << "Bien joué la lettre est dans le mot" << std::endl;
+
             if(verifierMot())
             {
                 std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
@@ -75,11 +78,14 @@ void JeuPendu::lancerPartie()
         }
         else
         {
+            std::cout << "Lettre incorrect !" << std::endl;
             tentativeRestantes--;
+            std::cout << std::endl;
             monInterface->afficherTentatives(tentativeRestantes);
             monInterface->dessinerPendu(tentativeRestantes);
         }
     }
+    std::cout << "Vous avez perdue ! la partie est finie" << std::endl;
     monInterface->quitter();
 }
 
@@ -88,7 +94,7 @@ void JeuPendu::choisirMot()
     std::srand(std::time(0));
 
     int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
-  
+
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
@@ -116,7 +122,6 @@ bool JeuPendu::verifierLettre(char lettreProposee)
         {
             trouvee        = true;
             motAtrouver[i] = lettreProposee;
-            std::cout << "Bien joué la lettre est dans le mot" << std::endl;
         }
     }
     return trouvee;
