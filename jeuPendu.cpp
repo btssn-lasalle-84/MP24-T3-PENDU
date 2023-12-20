@@ -53,6 +53,7 @@ void JeuPendu::jouer()
 
 void JeuPendu::lancerPartie()
 {
+    monInterface->afficherRegle();
     choisirMot();
     genererMotAtrouver();
 
@@ -129,7 +130,7 @@ bool JeuPendu::verifierLettre(char lettreProposee)
 
 void JeuPendu::genererMotAtrouver()
 {
-    motAtrouver = mot[0] + std::string(mot.length() - 2, '_') + mot[mot.length() - 1];
+    motAtrouver = mot[0] + std::string(mot.length() - 2, '_' ) + mot[mot.length() - 1];
 #ifdef DEBUG_JEU_PENDU
     std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
     std::cout << " - motAtrouver : " << motAtrouver << std::endl;
