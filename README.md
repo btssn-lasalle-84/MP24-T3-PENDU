@@ -54,7 +54,7 @@ La partie s'arrête donc lorsque soit le joueur à trouver le bon mot, soit lors
 
 ## Itérations
 
-
+![Alt text](iterations.png)
 
 ## Diagramme de classes
 
