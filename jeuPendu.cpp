@@ -88,7 +88,7 @@ void JeuPendu::choisirMot()
     std::srand(std::time(0));
 
     int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
-  
+
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
