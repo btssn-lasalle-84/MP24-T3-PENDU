@@ -3,6 +3,7 @@
 #include <iostream>
 #include <limits>
 #include <iomanip>
+#include <algorithm>
 
 InterfaceJoueurs::InterfaceJoueurs() : lettresUtilisees()
 {
@@ -48,10 +49,9 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
     std::cout << "**   3. Quitter           **\n";
     std::cout << "****************************\n";
     std::cout << "Choisissez une option : ";
-
     std::cin >> choix;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+    std::cout << std::endl;
     do
     {
         switch(choix)
@@ -87,9 +87,25 @@ void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
 char InterfaceJoueurs::demanderLettre()
 {
     char lettreProposee;
-    std::cout << "Entrez une lettre : ";
-    std::cin >> lettreProposee;
-    ajouterLettreUtilisee(lettreProposee);
+
+    do
+    {
+        std::cout << "Entrez une lettre : ";
+        std::cin >> lettreProposee;
+
+        if(std::find(lettresUtilisees.begin(), lettresUtilisees.end(), lettreProposee) !=
+           lettresUtilisees.end())
+        {
+            std::cout << "Vous avez déjà proposé cette lettre. Veuillez en choisir une autre."
+                      << std::endl;
+        }
+        else
+        {
+            ajouterLettreUtilisee(lettreProposee);
+            break;
+        }
+    } while(true);
+
     return lettreProposee;
 }
 
@@ -260,5 +276,6 @@ void InterfaceJoueurs::afficherNomJoueur(const std::string& nom)
 
 void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
 {
+    std::cout << std::endl;
     std::cout << "Le mot à trouver : " << motATrouver << std::endl;
 }
