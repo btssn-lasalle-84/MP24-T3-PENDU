@@ -112,7 +112,6 @@ void JeuPendu::lancerPartie()
 void JeuPendu::choisirMot()
 {
     srand(time(0));
-
     int indiceAleatoire = rand() % dictionnaire->listeMots.size();
     mot                 = dictionnaire->listeMots[indiceAleatoire];
 }
