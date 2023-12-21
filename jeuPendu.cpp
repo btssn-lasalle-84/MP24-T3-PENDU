@@ -6,6 +6,7 @@
 #include "joueur.h"
 #include <ctime>
 #include <cstdlib>
+using namespace std;
 
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
@@ -66,6 +67,9 @@ void JeuPendu::lancerPartie()
 
         if(verifierLettre(lettreProposee))
         {
+            cout << endl;
+            cout << "Bien joué la lettre est dans le mot" << endl;
+
             if(verifierMot())
             {
                 std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
@@ -75,7 +79,9 @@ void JeuPendu::lancerPartie()
         }
         else
         {
+            cout << "Lettre incorrecte !" << endl;
             tentativeRestantes--;
+            cout << endl;
             monInterface->afficherTentatives(tentativeRestantes);
             monInterface->dessinerPendu(tentativeRestantes);
         }
@@ -88,7 +94,7 @@ void JeuPendu::choisirMot()
     std::srand(std::time(0));
 
     int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
-  
+
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
@@ -109,16 +115,20 @@ bool JeuPendu::verifierMot() const
 
 bool JeuPendu::verifierLettre(char lettreProposee)
 {
-    bool trouvee = false;
+    bool trouvee                 = false;
+    char lettreProposeeMajuscule = std::toupper(lettreProposee);
+
     for(unsigned int i = 1; i < mot.length() - 1; i++)
     {
-        if(lettreProposee == mot[i])
+        char lettreMotMajuscule = std::toupper(mot[i]);
+
+        if(lettreProposeeMajuscule == lettreMotMajuscule)
         {
             trouvee        = true;
-            motAtrouver[i] = lettreProposee;
-            std::cout << "Bien joué la lettre est dans le mot" << std::endl;
+            motAtrouver[i] = lettreProposeeMajuscule;
         }
     }
+
     return trouvee;
 }
 
