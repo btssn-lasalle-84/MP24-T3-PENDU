@@ -4,6 +4,7 @@
 using namespace std;
 
 Dictionnaire::Dictionnaire() :
+
     listeMots({ "chaussette",
                 "poil",
                 "maman",
@@ -13,6 +14,7 @@ Dictionnaire::Dictionnaire() :
                 "banane",
                 "vilebrequin",
                 "anticonstitutionnellement" })
+
 {
 }
 

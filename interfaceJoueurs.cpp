@@ -284,3 +284,15 @@ void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
     std::cout << std::endl;
     std::cout << "Le mot à trouver : " << motATrouver << std::endl;
 }
+
+void InterfaceJoueurs::afficherRegle()
+{
+    std::cout << std::endl;
+    std::cout
+      << "-Le but du jeu est simple : deviner toute les lettres qui doivent composer un "
+         "mot,\n -éventuellement avec un nombre limité de tentatives et des thèmes fixés à "
+         "l'avance.\n -A chaque fois que le joueur devine une lettre,\n -celle-ci est affichée. "
+         "Dans le cas contraire, le dessin d'un pendu se met à apparaître…"
+      << std::endl;
+    std::cout << std::endl;
+}

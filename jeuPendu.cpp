@@ -53,6 +53,7 @@ void JeuPendu::jouer()
 
 void JeuPendu::lancerPartie()
 {
+    monInterface->afficherRegle();
     choisirMot();
     genererMotAtrouver();
 
@@ -84,7 +85,7 @@ void JeuPendu::lancerPartie()
             monInterface->dessinerPendu(tentativeRestantes);
         }
     }
-    std::cout << "Vous avez perdue ! la partie est finie" << std::endl;
+    std::cout << "Vous avez perdu ! La partie est finie" << std::endl;
     monInterface->quitter();
 }
 
