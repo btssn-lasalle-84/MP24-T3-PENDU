@@ -8,6 +8,8 @@
 #include <cstdlib>
 using namespace std;
 
+using namespace std;
+
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
     mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX)
@@ -54,6 +56,7 @@ void JeuPendu::jouer()
 
 void JeuPendu::lancerPartie()
 {
+    monInterface->afficherRegle();
     choisirMot();
     genererMotAtrouver();
 
@@ -72,8 +75,7 @@ void JeuPendu::lancerPartie()
 
             if(verifierMot())
             {
-                std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
-                monInterface->quitter();
+                cout << "Félicitations! Vous avez trouvé le mot : " << mot << endl;
                 break;
             }
         }
@@ -86,19 +88,21 @@ void JeuPendu::lancerPartie()
             monInterface->dessinerPendu(tentativeRestantes);
         }
     }
+    cout << "Vous avez perdu ! La partie est finie" << endl;
     monInterface->quitter();
 }
 
 void JeuPendu::choisirMot()
 {
-    std::srand(std::time(0));
+    srand(time(0));
+
+    int indiceAleatoire = rand() % dictionnaire->listeMots.size();
 
     int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
-
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
-std::string JeuPendu::getMot() const
+string JeuPendu::getMot() const
 {
     return mot;
 }
@@ -134,9 +138,14 @@ bool JeuPendu::verifierLettre(char lettreProposee)
 
 void JeuPendu::genererMotAtrouver()
 {
-    motAtrouver = mot[0] + std::string(mot.length() - 2, '_') + mot[mot.length() - 1];
+    motAtrouver = mot[0] + string(mot.length() - 2, '_') + mot[mot.length() - 1];
 #ifdef DEBUG_JEU_PENDU
-    std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
-    std::cout << " - motAtrouver : " << motAtrouver << std::endl;
+    cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
+    cout << " - motAtrouver : " << motAtrouver << endl;
 #endif
+}
+
+int JeuPendu::getTentativesRestantes()
+{
+    return tentativeRestantes;
 }
