@@ -25,8 +25,8 @@ class JeuPendu
   public:
     JeuPendu();
     ~JeuPendu();
-    JeuPendu(const JeuPendu& other);
-    JeuPendu& operator=(const JeuPendu& other);
+    JeuPendu(const JeuPendu& autre);
+    JeuPendu& operator=(const JeuPendu& autre);
 
     void        jouer();
     void        choisirMot();
@@ -36,6 +36,7 @@ class JeuPendu
     bool        verifierMot() const;
     bool        verifierLettre(char lettreProposee);
     void        genererMotAtrouver();
+    int         getTentativesRestantes();
 };
 
 #endif // JEU_PENDU_H

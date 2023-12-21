@@ -12,6 +12,7 @@ class InterfaceJoueurs
 
   public:
     InterfaceJoueurs();
+    void        afficherScores(const std::string& nom, int tentativesRestantes);
     void        quitter();
     void        afficherMenu(JeuPendu& jeuPendu);
     char        demanderLettre();
