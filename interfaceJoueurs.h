@@ -25,6 +25,7 @@ class InterfaceJoueurs
     void   ajouterLettreUtilisee(char lettre);
     void   afficherMotATrouver(const string& motATrouver) const;
     void   afficherRegle();
+    void   viderLettreUtilisee();
 };
 
 #endif // INTERFACE_JOUEURS_H

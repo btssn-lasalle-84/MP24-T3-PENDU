@@ -8,8 +8,6 @@
 #include <cstdlib>
 using namespace std;
 
-using namespace std;
-
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
     mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX)
@@ -56,46 +54,65 @@ void JeuPendu::jouer()
 
 void JeuPendu::lancerPartie()
 {
-    monInterface->afficherRegle();
-    choisirMot();
-    genererMotAtrouver();
-
-    monJoueur->enregisterNom(monInterface->saisirNomJoueur());
-    monInterface->afficherNomJoueur(monJoueur->getNom());
-
-    while(!estFinPartie())
+    while(true)
     {
-        monInterface->afficherMotATrouver(motAtrouver);
-        char lettreProposee = monInterface->demanderLettre();
+        monInterface->afficherRegle();
+        choisirMot();
+        genererMotAtrouver();
 
-        if(verifierLettre(lettreProposee))
+        monJoueur->enregisterNom(monInterface->saisirNomJoueur());
+        monInterface->afficherNomJoueur(monJoueur->getNom());
+
+        while(!estFinPartie())
         {
-            cout << endl;
-            cout << "Bien joué la lettre est dans le mot" << endl;
+            monInterface->afficherMotATrouver(motAtrouver);
+            char lettreProposee = monInterface->demanderLettre();
 
-            if(verifierMot())
+            if(verifierLettre(lettreProposee))
             {
-                cout << "Félicitations! Vous avez trouvé le mot : " << mot << endl;
+                cout << endl;
+                cout << "Bien joué la lettre est dans le mot" << endl;
+                monInterface->afficherTentatives(tentativeRestantes);
+
+                if(verifierMot())
+                {
+                    cout << endl;
+                    cout << "Félicitations! Vous avez trouvé le mot : " << mot << endl;
+                    break;
+                }
+            }
+            else if(tentativeRestantes == 0)
+            {
+                cout << "Il vous reste " << tentativeRestantes
+                     << " tentative ! vous avez perdu : " << endl;
                 break;
             }
+            else if(!verifierLettre(lettreProposee))
+            {
+                cout << "Lettre incorrecte !" << endl;
+                tentativeRestantes--;
+                cout << endl;
+                monInterface->afficherTentatives(tentativeRestantes);
+                monInterface->dessinerPendu(tentativeRestantes);
+            }
         }
-        else
+        char choixNouvellePartie;
+        cout << endl;
+        cout << "Voulez-vous jouer une nouvelle partie ? (O/N) : ";
+        cin >> choixNouvellePartie;
+        monInterface->viderLettreUtilisee();
+
+        if(choixNouvellePartie != 'O' && choixNouvellePartie != 'o')
         {
-            cout << "Lettre incorrecte !" << endl;
-            tentativeRestantes--;
-            cout << endl;
-            monInterface->afficherTentatives(tentativeRestantes);
-            monInterface->dessinerPendu(tentativeRestantes);
+            break;
         }
     }
-    cout << "Vous avez perdu ! La partie est finie" << endl;
-    monInterface->quitter();
 }
 
 void JeuPendu::choisirMot()
 {
     srand(time(0));
-    int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
+    int indiceAleatoire = rand() % dictionnaire->listeMots.size();
     mot                 = dictionnaire->listeMots[indiceAleatoire];
 }
 
