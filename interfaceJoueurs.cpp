@@ -61,7 +61,8 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
                 jeuPendu.lancerPartie();
                 break;
             case 2:
-                std::cout << "Afficher les scores...\n";
+                afficherScores("nom", jeuPendu.getTentativesRestantes());
+                afficherMenu(jeuPendu);
                 break;
             case 3:
                 quitter();
@@ -71,6 +72,10 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
         }
 
     } while(choix != 3);
+}
+void InterfaceJoueurs::afficherScores(const std::string& nom, int tentativesRestantes)
+{
+    std::cout << "Le joueur " << nom << " a réussi en " << tentativesRestantes << " essais\n";
 }
 
 void InterfaceJoueurs::quitter()

@@ -72,7 +72,6 @@ void JeuPendu::lancerPartie()
             if(verifierMot())
             {
                 std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
-                monInterface->quitter();
                 break;
             }
         }
@@ -134,4 +133,9 @@ void JeuPendu::genererMotAtrouver()
     std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
     std::cout << " - motAtrouver : " << motAtrouver << std::endl;
 #endif
+}
+
+int JeuPendu::getTentativesRestantes()
+{
+    return tentativeRestantes;
 }
