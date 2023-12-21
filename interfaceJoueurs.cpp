@@ -309,10 +309,15 @@ void InterfaceJoueurs::afficherNomJoueur(const string& nom)
     cout << "Bienvenue " << nom << endl;
 }
 
-void InterfaceJoueurs::afficherMotATrouver(const string& motATrouver) const
+void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
 {
-    cout << endl;
-    cout << "Le mot à trouver : " << motATrouver << endl;
+    std::cout << std::endl << "Le mot à trouver : ";
+    for(char caractere: motATrouver)
+    {
+        std::cout << caractere << ' ';
+    }
+
+    std::cout << std::endl;
 }
 
 void InterfaceJoueurs::afficherRegle()
