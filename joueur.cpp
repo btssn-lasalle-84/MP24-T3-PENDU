@@ -1,15 +1,17 @@
 #include "joueur.h"
 
-Joueur::Joueur(std::string nom) : nom(nom)
+using namespace std;
+
+Joueur::Joueur(string nom) : nom(nom)
 {
 }
 
-std::string Joueur::getNom() const
+string Joueur::getNom() const
 {
     return this->nom;
 }
 
-void Joueur::enregisterNom(const std::string& nom)
+void Joueur::enregisterNom(const string& nom)
 {
     this->nom = nom;
 }
