@@ -6,6 +6,7 @@
 #include "joueur.h"
 #include <ctime>
 #include <cstdlib>
+using namespace std;
 
 using namespace std;
 
@@ -80,7 +81,7 @@ void JeuPendu::lancerPartie()
         }
         else
         {
-            cout << "Lettre incorrect !" << endl;
+            cout << "Lettre incorrecte !" << endl;
             tentativeRestantes--;
             cout << endl;
             monInterface->afficherTentatives(tentativeRestantes);
@@ -97,6 +98,7 @@ void JeuPendu::choisirMot()
 
     int indiceAleatoire = rand() % dictionnaire->listeMots.size();
 
+    int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
@@ -117,15 +119,20 @@ bool JeuPendu::verifierMot() const
 
 bool JeuPendu::verifierLettre(char lettreProposee)
 {
-    bool trouvee = false;
+    bool trouvee                 = false;
+    char lettreProposeeMajuscule = std::toupper(lettreProposee);
+
     for(unsigned int i = 1; i < mot.length() - 1; i++)
     {
-        if(lettreProposee == mot[i])
+        char lettreMotMajuscule = std::toupper(mot[i]);
+
+        if(lettreProposeeMajuscule == lettreMotMajuscule)
         {
             trouvee        = true;
-            motAtrouver[i] = lettreProposee;
+            motAtrouver[i] = lettreProposeeMajuscule;
         }
     }
+
     return trouvee;
 }
 

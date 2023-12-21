@@ -5,16 +5,15 @@ using namespace std;
 
 Dictionnaire::Dictionnaire() :
 
-    listeMots({ "chaussette",
-                "poil",
-                "maman",
-                "bonnet",
-                "hache",
-                "trompette",
-                "banane",
-                "vilebrequin",
-                "anticonstitutionnellement" })
-
+    listeMots({ "CHAUSSETTE",
+                "POIL",
+                "MAMAN",
+                "BONNET",
+                "HACHE",
+                "TROMPETTE",
+                "BANANE",
+                "VILEBREQUIN",
+                "ANTICONSTITUTIONELLEMENT" })
 {
 }
 
