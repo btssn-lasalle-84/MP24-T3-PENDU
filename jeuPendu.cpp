@@ -7,6 +7,8 @@
 #include <ctime>
 #include <cstdlib>
 
+using namespace std;
+
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
     mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX)
@@ -67,38 +69,38 @@ void JeuPendu::lancerPartie()
 
         if(verifierLettre(lettreProposee))
         {
-            std::cout << std::endl;
-            std::cout << "Bien joué la lettre est dans le mot" << std::endl;
+            cout << endl;
+            cout << "Bien joué la lettre est dans le mot" << endl;
 
             if(verifierMot())
             {
-                std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
+                cout << "Félicitations! Vous avez trouvé le mot : " << mot << endl;
                 break;
             }
         }
         else
         {
-            std::cout << "Lettre incorrect !" << std::endl;
+            cout << "Lettre incorrect !" << endl;
             tentativeRestantes--;
-            std::cout << std::endl;
+            cout << endl;
             monInterface->afficherTentatives(tentativeRestantes);
             monInterface->dessinerPendu(tentativeRestantes);
         }
     }
-    std::cout << "Vous avez perdu ! La partie est finie" << std::endl;
+    cout << "Vous avez perdu ! La partie est finie" << endl;
     monInterface->quitter();
 }
 
 void JeuPendu::choisirMot()
 {
-    std::srand(std::time(0));
+    srand(time(0));
 
-    int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
+    int indiceAleatoire = rand() % dictionnaire->listeMots.size();
 
     mot = dictionnaire->listeMots[indiceAleatoire];
 }
 
-std::string JeuPendu::getMot() const
+string JeuPendu::getMot() const
 {
     return mot;
 }
@@ -129,10 +131,10 @@ bool JeuPendu::verifierLettre(char lettreProposee)
 
 void JeuPendu::genererMotAtrouver()
 {
-    motAtrouver = mot[0] + std::string(mot.length() - 2, '_') + mot[mot.length() - 1];
+    motAtrouver = mot[0] + string(mot.length() - 2, '_') + mot[mot.length() - 1];
 #ifdef DEBUG_JEU_PENDU
-    std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
-    std::cout << " - motAtrouver : " << motAtrouver << std::endl;
+    cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
+    cout << " - motAtrouver : " << motAtrouver << endl;
 #endif
 }
 
