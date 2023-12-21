@@ -102,7 +102,7 @@ char InterfaceJoueurs::demanderLettre()
 void InterfaceJoueurs::afficherTentatives(int tentativesRestantes)
 {
     cout << "Tentatives restantes : " << tentativesRestantes << endl;
-    cout << "Lettres utilisées : ";
+    cout << "Lettre(s) déjà proposée(s) : ";
     for(char lettre: lettresUtilisees)
     {
         cout << lettre << " ";
@@ -324,4 +324,8 @@ void InterfaceJoueurs::afficherRegle()
             "Dans le cas contraire, le dessin d'un pendu se met à apparaître…"
          << endl;
     cout << endl;
+}
+void InterfaceJoueurs::viderLettreUtilisee()
+{
+    lettresUtilisees.clear();
 }
