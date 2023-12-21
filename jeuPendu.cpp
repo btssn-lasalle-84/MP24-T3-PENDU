@@ -86,7 +86,7 @@ void JeuPendu::lancerPartie()
             monInterface->dessinerPendu(tentativeRestantes);
         }
     }
-    std::cout << "Vous avez perdue ! la partie est finie" << std::endl;
+    std::cout << "Vous avez perdu ! La partie est finie" << std::endl;
     monInterface->quitter();
 }
 
@@ -130,7 +130,7 @@ bool JeuPendu::verifierLettre(char lettreProposee)
 
 void JeuPendu::genererMotAtrouver()
 {
-    motAtrouver = mot[0] + std::string(mot.length() - 2, '_' ) + mot[mot.length() - 1];
+    motAtrouver = mot[0] + std::string(mot.length() - 2, '_') + mot[mot.length() - 1];
 #ifdef DEBUG_JEU_PENDU
     std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
     std::cout << " - motAtrouver : " << motAtrouver << std::endl;
