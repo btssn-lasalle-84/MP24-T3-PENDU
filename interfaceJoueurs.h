@@ -14,6 +14,7 @@ class InterfaceJoueurs
 
   public:
     InterfaceJoueurs();
+    void   lancerPartie();
     void   afficherScores(const string& nom, int tentativesRestantes);
     void   quitter();
     void   afficherMenu(JeuPendu& jeuPendu);
