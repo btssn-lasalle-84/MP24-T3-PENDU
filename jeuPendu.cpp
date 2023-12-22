@@ -10,7 +10,7 @@ using namespace std;
 
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
-    mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX)
+    mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX), lettreProposee()
 {
 }
 
@@ -25,7 +25,8 @@ JeuPendu::JeuPendu(const JeuPendu& jeuPendu) :
     monInterface(new InterfaceJoueurs(*(jeuPendu.monInterface))),
     dictionnaire(new Dictionnaire(*(jeuPendu.dictionnaire))),
     monJoueur(new Joueur(*(jeuPendu.monJoueur))), mot(jeuPendu.mot),
-    motAtrouver(jeuPendu.motAtrouver), tentativeRestantes(jeuPendu.tentativeRestantes)
+    motAtrouver(jeuPendu.motAtrouver), tentativeRestantes(jeuPendu.tentativeRestantes),
+    lettreProposee(jeuPendu.lettreProposee)
 {
 }
 
@@ -43,6 +44,7 @@ JeuPendu& JeuPendu::operator=(const JeuPendu& jeuPendu)
         mot                = jeuPendu.mot;
         motAtrouver        = jeuPendu.motAtrouver;
         tentativeRestantes = jeuPendu.tentativeRestantes;
+        lettreProposee     = jeuPendu.lettreProposee;
     }
     return *this;
 }
