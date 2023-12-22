@@ -43,7 +43,7 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
         switch(choix)
         {
             case 1:
-                cout << "Lancement d'une nouvelle partie...\n";
+                lancerPartie();
                 jeuPendu.lancerPartie();
                 break;
             case 2:
@@ -59,6 +59,12 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 
     } while(choix != 3);
 }
+
+void InterfaceJoueurs::lancerPartie()
+{
+    cout << "Lancement d'une nouvelle partie...\n";
+}
+
 void InterfaceJoueurs::afficherScores(const string& nom, int tentativesRestantes)
 {
     cout << "Le joueur " << nom << " a réussi en " << 11 - tentativesRestantes << " essais\n";
@@ -145,7 +151,7 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
         std::cout << std::setfill('-') << std::setw(11) << '\n';
         std::cout << "\033[34m"
-                  << "Deuxième tentative : Oui main non"
+                  << "Deuxième tentative : Oui mais non"
                   << "\033[0m" << std::endl;
         std::cout << '\n';
     }
