@@ -49,11 +49,6 @@ JeuPendu& JeuPendu::operator=(const JeuPendu& jeuPendu)
     return *this;
 }
 
-void JeuPendu::jouer()
-{
-    monInterface->afficherMenu(*this);
-}
-
 void JeuPendu::lancerPartie()
 {
     while(true)
@@ -79,7 +74,8 @@ void JeuPendu::lancerPartie()
                 if(verifierMot())
                 {
                     cout << endl;
-                    cout << "Félicitations! Vous avez trouvé le mot : " << mot << endl;
+                    cout << "Félicitations! " << monJoueur->getNom()
+                         << "Vous avez trouvé le mot : " << mot << endl;
                     break;
                 }
             }
@@ -98,24 +94,10 @@ void JeuPendu::lancerPartie()
                 monInterface->dessinerPendu(tentativeRestantes);
             }
         }
-        char choixNouvellePartie;
-        cout << endl;
-        cout << "Voulez-vous jouer une nouvelle partie ? (O/N) : ";
-        cin >> choixNouvellePartie;
+        tentativeRestantes = NB_ESSAIS_MAX;
         monInterface->viderLettreUtilisee();
-
-        if(choixNouvellePartie != 'O' && choixNouvellePartie != 'o')
-        {
-            break;
-        }
+        monInterface->afficherMenu(*this);
     }
-}
-
-void JeuPendu::choisirMot()
-{
-    srand(time(0));
-    int indiceAleatoire = rand() % dictionnaire->listeMots.size();
-    mot                 = dictionnaire->listeMots[indiceAleatoire];
 }
 
 string JeuPendu::getMot() const
@@ -164,4 +146,10 @@ void JeuPendu::genererMotAtrouver()
 int JeuPendu::getTentativesRestantes()
 {
     return tentativeRestantes;
+}
+void JeuPendu::choisirMot()
+{
+    srand(time(0));
+    int indiceAleatoire = rand() % dictionnaire->listeMots.size();
+    mot                 = dictionnaire->listeMots[indiceAleatoire];
 }

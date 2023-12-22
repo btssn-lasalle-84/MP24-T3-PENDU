@@ -10,13 +10,14 @@ class JeuPendu;
 class InterfaceJoueurs
 {
   private:
-    vector<char> lettresUtilisees;
+    void quitter();
 
   public:
+    vector<char> lettresUtilisees;
     InterfaceJoueurs();
     void   lancerPartie();
     void   afficherScores(const string& nom, int tentativesRestantes);
-    void   quitter();
+    void   viderLettreUtilisee();
     void   afficherMenu(JeuPendu& jeuPendu);
     char   demanderLettre();
     void   afficherTentatives(int tentativesRestantes);
@@ -26,7 +27,6 @@ class InterfaceJoueurs
     void   ajouterLettreUtilisee(char lettre);
     void   afficherMotATrouver(const string& motATrouver) const;
     void   afficherRegle();
-    void   viderLettreUtilisee();
 };
 
 #endif // INTERFACE_JOUEURS_H

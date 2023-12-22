@@ -26,9 +26,7 @@ class JeuPendu
     JeuPendu();
     ~JeuPendu();
     JeuPendu(const JeuPendu& autre);
-    JeuPendu& operator=(const JeuPendu& autre);
-
-    void        jouer();
+    JeuPendu&   operator=(const JeuPendu& autre);
     void        choisirMot();
     void        lancerPartie();
     std::string getMot() const;
