@@ -68,26 +68,34 @@ void JeuPendu::lancerPartie()
             if(verifierLettre(lettreProposee))
             {
                 cout << endl;
+                std::cout << "\033[32m";
                 cout << "Bien joué la lettre est dans le mot" << endl;
+                std::cout << "\033[0m";
                 monInterface->afficherTentatives(tentativeRestantes);
 
                 if(verifierMot())
                 {
                     cout << endl;
+                    std::cout << "\033[32m";
                     cout << "Félicitations " << monJoueur->getNom()
                          << " ! \nVous avez trouvé le mot : " << mot << endl;
+                    std::cout << "\033[0m";
                     break;
                 }
             }
             else if(tentativeRestantes == 0)
             {
+                std::cout << "\033[1;31m";
                 cout << "Il vous reste " << tentativeRestantes
                      << " tentative ! vous avez perdu : " << endl;
+                std::cout << "\033[0m";
                 break;
             }
             else if(!verifierLettre(lettreProposee))
             {
+                std::cout << "\033[1;31m";
                 cout << "Lettre incorrecte !" << endl;
+                std::cout << "\033[0m";
                 tentativeRestantes--;
                 cout << endl;
                 monInterface->afficherTentatives(tentativeRestantes);
