@@ -74,8 +74,8 @@ void JeuPendu::lancerPartie()
                 if(verifierMot())
                 {
                     cout << endl;
-                    cout << "Félicitations! " << monJoueur->getNom()
-                         << "Vous avez trouvé le mot : " << mot << endl;
+                    cout << "Félicitations " << monJoueur->getNom()
+                         << " ! \nVous avez trouvé le mot : " << mot << endl;
                     break;
                 }
             }

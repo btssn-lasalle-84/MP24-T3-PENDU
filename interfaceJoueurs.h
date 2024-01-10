@@ -16,7 +16,7 @@ class InterfaceJoueurs
     vector<char> lettresUtilisees;
     InterfaceJoueurs();
     void   lancerPartie();
-    void   afficherScores(const string& nom, int tentativesRestantes);
+    void   afficherScores();
     void   viderLettreUtilisee();
     void   afficherMenu(JeuPendu& jeuPendu);
     char   demanderLettre();
