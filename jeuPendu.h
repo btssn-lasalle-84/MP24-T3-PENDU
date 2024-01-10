@@ -27,7 +27,6 @@ class JeuPendu
     ~JeuPendu();
     JeuPendu(const JeuPendu& autre);
     JeuPendu&   operator=(const JeuPendu& autre);
-    void        choisirMot();
     void        lancerPartie();
     std::string getMot() const;
     bool        estFinPartie() const;
@@ -35,6 +34,7 @@ class JeuPendu
     bool        verifierLettre(char lettreProposee);
     void        genererMotAtrouver();
     int         getTentativesRestantes();
+    void        choisirMot();
 };
 
 #endif // JEU_PENDU_H
