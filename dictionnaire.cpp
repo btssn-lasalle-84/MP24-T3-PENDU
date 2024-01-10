@@ -1,25 +1,30 @@
 #include "dictionnaire.h"
+#include <fstream>
 #include <random>
 
 using namespace std;
 
-Dictionnaire::Dictionnaire() :
-
-    listeMots({ "CHAUSSETTE",
-                "POIL",
-                "MAMAN",
-                "BONNET",
-                "HACHE",
-                "TROMPETTE",
-                "BANANE",
-                "VILEBREQUIN",
-                "ANTICONSTITUTIONELLEMENT" })
+Dictionnaire::Dictionnaire()
 {
+    charger("gateau.txt");
 }
 
-void Dictionnaire::charger()
+void Dictionnaire::charger(const std::string& nomFichier)
 {
-    // @todo remplir le vector listeMots à partir d'un fichier
+    ifstream fichier(nomFichier);
+
+    if(fichier.is_open())
+    {
+        listeMots.clear();
+
+        string mot;
+        while(getline(fichier, mot))
+        {
+            listeMots.push_back(mot);
+        }
+
+        fichier.close();
+    }
 }
 
 std::string Dictionnaire::genererMotSecret() const

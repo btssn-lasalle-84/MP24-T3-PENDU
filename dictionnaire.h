@@ -6,11 +6,13 @@
 
 class Dictionnaire
 {
-  private:
   public:
     Dictionnaire();
-    void                     charger();
-    std::string              genererMotSecret() const;
+
+    void        charger(const std::string& nomFichier);
+    std::string genererMotSecret() const;
+
+  private:
     std::vector<std::string> listeMots;
 };
 
