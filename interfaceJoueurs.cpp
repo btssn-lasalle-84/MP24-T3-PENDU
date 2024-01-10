@@ -47,7 +47,7 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
                 jeuPendu.lancerPartie();
                 break;
             case 2:
-                afficherScores("nom", jeuPendu.getTentativesRestantes());
+                afficherScores();
                 afficherMenu(jeuPendu);
                 break;
             case 3:
@@ -63,11 +63,6 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 void InterfaceJoueurs::lancerPartie()
 {
     cout << "Lancement d'une nouvelle partie...\n";
-}
-
-void InterfaceJoueurs::afficherScores(const string& nom, int tentativesRestantes)
-{
-    cout << "Le joueur " << nom << " a réussi en " << 11 - tentativesRestantes << " essais\n";
 }
 
 void InterfaceJoueurs::quitter()
@@ -336,6 +331,37 @@ void InterfaceJoueurs::afficherRegle()
          << endl;
     cout << endl;
 }
+struct Score
+{
+    std::string nom;
+    int         score;
+};
+
+std::vector<Score> scores;
+
+void InterfaceJoueurs::afficherScores()
+{
+    if(scores.empty())
+    {
+        std::cout << "Aucun score disponible pour le moment.\n";
+    }
+    else
+    {
+        std::cout << "Scores :\n";
+        for(const auto& score: scores)
+        {
+            std::cout << score.nom << " : " << score.score << " points\n";
+        }
+    }
+}
+
+void ajouterScore(const std::string& nom, int tentativesRestantes)
+{
+    int score = 11 - tentativesRestantes;
+
+    scores.push_back({ nom, score });
+}
+
 void InterfaceJoueurs::viderLettreUtilisee()
 {
     lettresUtilisees.clear();
