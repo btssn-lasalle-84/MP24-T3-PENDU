@@ -28,6 +28,7 @@ class JeuPendu
     JeuPendu(const JeuPendu& autre);
     JeuPendu&   operator=(const JeuPendu& autre);
     void        choisirMot();
+    void        choisirTheme(JeuPendu& jeuPendu);
     void        lancerPartie();
     std::string getMot() const;
     bool        estFinPartie() const;

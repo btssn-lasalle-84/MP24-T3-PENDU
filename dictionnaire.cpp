@@ -6,7 +6,7 @@ using namespace std;
 
 Dictionnaire::Dictionnaire()
 {
-    charger("gateau.txt");
+    charger("ecole.txt");
 }
 
 void Dictionnaire::charger(const std::string& nomFichier)

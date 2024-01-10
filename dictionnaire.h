@@ -9,11 +9,11 @@ class Dictionnaire
   public:
     Dictionnaire();
 
-    void        charger(const std::string& nomFichier);
-    std::string genererMotSecret() const;
+    void                     charger(const std::string& nomFichier);
+    std::string              genererMotSecret() const;
+    std::vector<std::string> listeMots;
 
   private:
-    std::vector<std::string> listeMots;
 };
 
 #endif // DICTIONNAIRE_H

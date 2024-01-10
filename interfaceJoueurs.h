@@ -15,7 +15,9 @@ class InterfaceJoueurs
   public:
     vector<char> lettresUtilisees;
     InterfaceJoueurs();
-    void   lancerPartie();
+    int    choix;
+    void   choisirTheme();
+    void   lancerPartie(JeuPendu& jeuPendu);
     void   afficherScores();
     void   viderLettreUtilisee();
     void   afficherMenu(JeuPendu& jeuPendu);

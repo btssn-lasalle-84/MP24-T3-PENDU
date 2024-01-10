@@ -13,8 +13,6 @@ InterfaceJoueurs::InterfaceJoueurs() : lettresUtilisees()
 
 void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
 {
-    int choix;
-
     std::cout << "\033[1;31m";
 
     std::cout << "      _   ______  _    _     _____    _    _     ______   ______  ______   _____ "
@@ -43,8 +41,7 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
         switch(choix)
         {
             case 1:
-                lancerPartie();
-                jeuPendu.lancerPartie();
+                jeuPendu.choisirTheme(jeuPendu);
                 break;
             case 2:
                 afficherScores();
@@ -58,11 +55,6 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
         }
 
     } while(choix != 3);
-}
-
-void InterfaceJoueurs::lancerPartie()
-{
-    cout << "Lancement d'une nouvelle partie...\n";
 }
 
 void InterfaceJoueurs::quitter()

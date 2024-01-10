@@ -49,6 +49,41 @@ JeuPendu& JeuPendu::operator=(const JeuPendu& jeuPendu)
     return *this;
 }
 
+void JeuPendu::choisirTheme(JeuPendu& jeuPendu)
+{
+    int choix;
+    cout << "****************************\n";
+    cout << "**   1. École             **\n";
+    cout << "**   2. Plage             **\n";
+    cout << "**   3. Numérique         **\n";
+    cout << "**   4. Retour            **\n";
+    cout << "****************************\n";
+    cout << "Choisissez le thème : ";
+    cin >> choix;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << endl;
+    do
+    {
+        switch(choix)
+        {
+            case 1:
+                lancerPartie();
+                jeuPendu.lancerPartie();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                monInterface->afficherMenu(*this);
+                break;
+            default:
+                cout << "Option invalide. Veuillez choisir à nouveau.\n";
+        }
+
+    } while(choix != 3);
+}
+
 void JeuPendu::lancerPartie()
 {
     while(true)
