@@ -25,17 +25,16 @@ class JeuPendu
   public:
     JeuPendu();
     ~JeuPendu();
-    JeuPendu(const JeuPendu& other);
-    JeuPendu& operator=(const JeuPendu& other);
-
-    void        jouer();
-    void        choisirMot();
+    JeuPendu(const JeuPendu& autre);
+    JeuPendu&   operator=(const JeuPendu& autre);
     void        lancerPartie();
     std::string getMot() const;
     bool        estFinPartie() const;
     bool        verifierMot() const;
     bool        verifierLettre(char lettreProposee);
     void        genererMotAtrouver();
+    int         getTentativesRestantes();
+    void        choisirMot();
 };
 
 #endif // JEU_PENDU_H

@@ -5,9 +5,9 @@
 ## Informations
 
 - Nom du logiciel : Jeu Du Pendu
-- Date de début : 29 Novembre 2023
-- Numéro de version du logiciel : 1.0
-- Date de cette version du logiciel : 15 Décembre 2023
+- Date de début : 20 Décembre 2023
+- Numéro de version du logiciel : 1.1
+- Date de cette version du logiciel : 14 Janvier 2024
 
 ## Présentation + Objectifs
 
@@ -39,26 +39,32 @@ $ ./pendu.out
 
 ## Ce que le logiciel fait dans cette version
 
-Dans cette version, un mot est choisi aléatoirement dans une liste prédéfini.
+Dans cette version, un mot est choisi aléatoirement dans une liste prédéfinie.
 
-On affiche le mot à deviner et une lettre est demander pour tenté de deviner le mot, si la lettre choisi est dans le mot, la lettre est affichée à sa place dans le mot sinon, lorsque la lettre choisi n'est pas dans le mot, le pendu commence à se dessiner.
+On affiche le mot à deviner et une lettre est demandée pour tenter de deviner le mot, si la lettre choisie est dans le mot, la lettre est affichée à sa place dans le mot sinon, lorsque la lettre choisie n'est pas dans le mot, le pendu commence à se dessiner.
 
-La partie s'arrête donc lorsque soit le joueur à trouver le bon mot, soit lorsque le joueur est arrivé au bout des 11 tentatives et que le dessin est entièrement dessiner.
+La partie s'arrête donc lorsque soit le joueur a trouver le bon mot, soit lorsque le joueur est arrivé au bout des 11 tentatives et que le dessin est entièrement dessiné.
+
+Le mot à trouver est affiché avec des espaces entre chaque tiret, ainsi qu'un affciahage en couleur vert lorsque qu'une lettre à été trouvé et rouge si ce n'est pas le cas.
+
+L'utilisateur peut desormais saisir les lettres en majuscule et en minuscule.
 
 ## TODO
 
+Dans la future version de ce jeu, il sera possible de choisir le thème des mots à deviner ainsi qu'une amélioration de l'interface joueur.
+
 ## Défauts constatés non corrigés
 
-- Lorsque une lettre correcte se trouve plusieurs fois dans le mot, le message "Bien joué la lettre est dans le mot" s'affiche plusieurs fois aussi.
-- Lorsqu'on choisi plusieurs fois la même lettre, cela comptabilise quand même l'erreur si la lettre n'appartient pas au mot ou la valide si elle y appartient. La lettre s'affiche aussi plusieurs fois dans "Lettres utilisées : "
+- Lorsqu'un mot long est tiré et que l'on saisit directement le mot, on se retrouve dans une boucle.
+-Il n'est pas possible de voir les scores lorsque l'on choisit 2 dans le menu .
 
 ## Itérations
 
-![Alt text](iterations.png)
+![Alt text](Images/iterations.png)
 
 ## Diagramme de classes
 
-![Alt text](image.png)
+![Alt text](<Images/Digramme-de-classe.png>)
 
 ## Équipe de développement
 

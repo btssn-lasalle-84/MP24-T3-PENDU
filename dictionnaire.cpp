@@ -1,9 +1,19 @@
 #include "dictionnaire.h"
+#include <fstream>
 #include <random>
 
 using namespace std;
 
-Dictionnaire::Dictionnaire() : listeMots({ "chaussette", "poil", "maman", "bonnet" })
+Dictionnaire::Dictionnaire() :
+    listeMots({ "CHAUSSETTE",
+                "POIL",
+                "MAMAN",
+                "BONNET",
+                "ORDINATEUR",
+                "CACTUS",
+                "SOURIS",
+                "PIANO",
+                "TIGRE" })
 {
 }
 
@@ -14,9 +24,9 @@ void Dictionnaire::charger()
 
 std::string Dictionnaire::genererMotSecret() const
 {
-    std::default_random_engine         generateur;
-    std::uniform_int_distribution<int> distribution(0, listeMots.size() - 1);
-    int                                numeroMot = distribution(generateur);
+    default_random_engine         generateur;
+    uniform_int_distribution<int> distribution(0, listeMots.size() - 1);
+    int                           numeroMot = distribution(generateur);
 
     return listeMots[numeroMot];
 }

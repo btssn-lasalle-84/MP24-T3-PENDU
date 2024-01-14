@@ -6,12 +6,14 @@
 
 class Dictionnaire
 {
-  private:
   public:
     Dictionnaire();
+
     void                     charger();
     std::string              genererMotSecret() const;
     std::vector<std::string> listeMots;
+
+  private:
 };
 
 #endif // DICTIONNAIRE_H

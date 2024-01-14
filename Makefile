@@ -28,3 +28,13 @@ $(EXECUTABLE): $(OBJECTS)
 # Nettoyeur
 clean:
 	rm -f $(OBJECTS) $(EXECUTABLE)
+
+# Clang-format
+CLANG_FORMAT = clang-format
+CLANG_FORMAT_STYLE = -style=file
+CLANG_FORMAT_FILES = $(SOURCES) $(wildcard $(INCDIR)/*.h)
+
+# Formatage du code avec clang-format
+format:
+	$(CLANG_FORMAT) -i $(CLANG_FORMAT_FILES)
+

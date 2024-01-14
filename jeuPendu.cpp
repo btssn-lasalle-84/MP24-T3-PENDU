@@ -6,10 +6,11 @@
 #include "joueur.h"
 #include <ctime>
 #include <cstdlib>
+using namespace std;
 
 JeuPendu::JeuPendu() :
     monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire), monJoueur(new Joueur),
-    mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX)
+    mot(""), motAtrouver(""), tentativeRestantes(NB_ESSAIS_MAX), lettreProposee()
 {
 }
 
@@ -24,7 +25,8 @@ JeuPendu::JeuPendu(const JeuPendu& jeuPendu) :
     monInterface(new InterfaceJoueurs(*(jeuPendu.monInterface))),
     dictionnaire(new Dictionnaire(*(jeuPendu.dictionnaire))),
     monJoueur(new Joueur(*(jeuPendu.monJoueur))), mot(jeuPendu.mot),
-    motAtrouver(jeuPendu.motAtrouver), tentativeRestantes(jeuPendu.tentativeRestantes)
+    motAtrouver(jeuPendu.motAtrouver), tentativeRestantes(jeuPendu.tentativeRestantes),
+    lettreProposee(jeuPendu.lettreProposee)
 {
 }
 
@@ -42,57 +44,71 @@ JeuPendu& JeuPendu::operator=(const JeuPendu& jeuPendu)
         mot                = jeuPendu.mot;
         motAtrouver        = jeuPendu.motAtrouver;
         tentativeRestantes = jeuPendu.tentativeRestantes;
+        lettreProposee     = jeuPendu.lettreProposee;
     }
     return *this;
 }
 
-void JeuPendu::jouer()
-{
-    monInterface->afficherMenu(*this);
-}
-
 void JeuPendu::lancerPartie()
 {
-    choisirMot();
-    genererMotAtrouver();
-
-    monJoueur->enregisterNom(monInterface->saisirNomJoueur());
-    monInterface->afficherNomJoueur(monJoueur->getNom());
-
-    while(!estFinPartie())
+    while(true)
     {
-        monInterface->afficherMotATrouver(motAtrouver);
-        char lettreProposee = monInterface->demanderLettre();
+        monInterface->afficherRegle();
+        choisirMot();
+        genererMotAtrouver();
 
-        if(verifierLettre(lettreProposee))
+        monJoueur->enregisterNom(monInterface->saisirNomJoueur());
+        monInterface->afficherNomJoueur(monJoueur->getNom());
+
+        while(!estFinPartie())
         {
-            if(verifierMot())
+            monInterface->afficherMotATrouver(motAtrouver);
+            char lettreProposee = monInterface->demanderLettre();
+
+            if(verifierLettre(lettreProposee))
             {
-                std::cout << "Félicitations! Vous avez trouvé le mot : " << mot << std::endl;
-                monInterface->quitter();
+                cout << endl;
+                std::cout << "\033[32m";
+                cout << "Bien joué la lettre est dans le mot" << endl;
+                std::cout << "\033[0m";
+                monInterface->afficherTentatives(tentativeRestantes);
+
+                if(verifierMot())
+                {
+                    cout << endl;
+                    std::cout << "\033[32m";
+                    cout << "Félicitations " << monJoueur->getNom()
+                         << " ! \nVous avez trouvé le mot : " << mot << endl;
+                    std::cout << "\033[0m";
+                    break;
+                }
+            }
+            else if(tentativeRestantes == 0)
+            {
+                std::cout << "\033[1;31m";
+                cout << "Il vous reste " << tentativeRestantes
+                     << " tentative ! vous avez perdu : " << endl;
+                std::cout << "\033[0m";
                 break;
             }
+            else if(!verifierLettre(lettreProposee))
+            {
+                std::cout << "\033[1;31m";
+                cout << "Lettre incorrecte !" << endl;
+                std::cout << "\033[0m";
+                tentativeRestantes--;
+                cout << endl;
+                monInterface->afficherTentatives(tentativeRestantes);
+                monInterface->dessinerPendu(tentativeRestantes);
+            }
         }
-        else
-        {
-            tentativeRestantes--;
-            monInterface->afficherTentatives(tentativeRestantes);
-            monInterface->dessinerPendu(tentativeRestantes);
-        }
+        tentativeRestantes = NB_ESSAIS_MAX;
+        monInterface->viderLettreUtilisee();
+        monInterface->afficherMenu(*this);
     }
-    monInterface->quitter();
 }
 
-void JeuPendu::choisirMot()
-{
-    std::srand(std::time(0));
-
-    int indiceAleatoire = std::rand() % dictionnaire->listeMots.size();
-  
-    mot = dictionnaire->listeMots[indiceAleatoire];
-}
-
-std::string JeuPendu::getMot() const
+string JeuPendu::getMot() const
 {
     return mot;
 }
@@ -109,24 +125,40 @@ bool JeuPendu::verifierMot() const
 
 bool JeuPendu::verifierLettre(char lettreProposee)
 {
-    bool trouvee = false;
+    bool trouvee                 = false;
+    char lettreProposeeMajuscule = std::toupper(lettreProposee);
+
     for(unsigned int i = 1; i < mot.length() - 1; i++)
     {
-        if(lettreProposee == mot[i])
+        char lettreMotMajuscule = std::toupper(mot[i]);
+
+        if(lettreProposeeMajuscule == lettreMotMajuscule)
         {
             trouvee        = true;
-            motAtrouver[i] = lettreProposee;
-            std::cout << "Bien joué la lettre est dans le mot" << std::endl;
+            motAtrouver[i] = lettreProposeeMajuscule;
         }
     }
+
     return trouvee;
 }
 
 void JeuPendu::genererMotAtrouver()
 {
-    motAtrouver = mot[0] + std::string(mot.length() - 2, '_') + mot[mot.length() - 1];
+    motAtrouver = mot[0] + string(mot.length() - 2, '_') + mot[mot.length() - 1];
 #ifdef DEBUG_JEU_PENDU
-    std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
-    std::cout << " - motAtrouver : " << motAtrouver << std::endl;
+    cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] ";
+    cout << " - motAtrouver : " << motAtrouver << endl;
 #endif
+}
+
+int JeuPendu::getTentativesRestantes()
+{
+    return tentativeRestantes;
+}
+void JeuPendu::choisirMot()
+{
+    srand(time(0));
+    int indiceAleatoire = rand() % dictionnaire->listeMots.size();
+    mot                 = dictionnaire->listeMots[indiceAleatoire];
+    dictionnaire->genererMotSecret();
 }

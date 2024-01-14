@@ -4,24 +4,29 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class JeuPendu;
 class InterfaceJoueurs
 {
   private:
-    std::vector<char> lettresUtilisees;
+    void quitter();
 
   public:
+    vector<char> lettresUtilisees;
     InterfaceJoueurs();
-    void        quitter();
-    void        afficherMenu(JeuPendu& jeuPendu);
-    char        demanderLettre();
-    void        afficherTentatives(int tentativesRestantes);
-    void        dessinerPendu(int tentativesRestantes);
-    std::string saisirNomJoueur();
-    void        afficherNomJoueur(const std::string& nom);
-    void        ajouterLettreUtilisee(char lettre);
-    void        afficherMotATrouver(const std::string& motATrouver) const;
-
+    void   lancerPartie();
+    void   afficherScores();
+    void   viderLettreUtilisee();
+    void   afficherMenu(JeuPendu& jeuPendu);
+    char   demanderLettre();
+    void   afficherTentatives(int tentativesRestantes);
+    void   dessinerPendu(int tentativesRestantes);
+    string saisirNomJoueur();
+    void   afficherNomJoueur(const string& nom);
+    void   ajouterLettreUtilisee(char lettre);
+    void   afficherMotATrouver(const string& motATrouver) const;
+    void   afficherRegle();
 };
 
 #endif // INTERFACE_JOUEURS_H
