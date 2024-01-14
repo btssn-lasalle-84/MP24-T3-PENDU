@@ -4,27 +4,22 @@
 
 using namespace std;
 
-Dictionnaire::Dictionnaire()
+Dictionnaire::Dictionnaire() :
+    listeMots({ "CHAUSSETTE",
+                "POIL",
+                "MAMAN",
+                "BONNET",
+                "ORDINATEUR",
+                "CACTUS",
+                "SOURIS",
+                "PIANO",
+                "TIGRE" })
 {
-    charger("dico.txt");
 }
 
-void Dictionnaire::charger(const std::string& nomFichier)
+void Dictionnaire::charger()
 {
-    ifstream fichier(nomFichier);
-
-    if(fichier.is_open())
-    {
-        listeMots.clear();
-
-        string mot;
-        while(getline(fichier, mot))
-        {
-            listeMots.push_back(mot);
-        }
-
-        fichier.close();
-    }
+    // @todo remplir le vector listeMots à partir d'un fichier
 }
 
 std::string Dictionnaire::genererMotSecret() const

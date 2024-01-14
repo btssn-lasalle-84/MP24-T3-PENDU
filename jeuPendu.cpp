@@ -162,4 +162,3 @@ void JeuPendu::choisirMot()
     mot                 = dictionnaire->listeMots[indiceAleatoire];
     dictionnaire->genererMotSecret();
 }
-
