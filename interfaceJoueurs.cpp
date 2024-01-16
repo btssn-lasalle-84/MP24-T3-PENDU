@@ -7,7 +7,7 @@
 
 using namespace std;
 
-InterfaceJoueurs::InterfaceJoueurs() : lettresUtilisees()
+InterfaceJoueurs::InterfaceJoueurs()
 {
 }
 
@@ -36,7 +36,6 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
     cout << "****************************\n";
     cout << "Choisissez une option : ";
     cin >> choix;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << endl;
     do
     {
@@ -55,6 +54,8 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
                 break;
             default:
                 cout << "Option invalide. Veuillez choisir à nouveau.\n";
+                viderBuffer();
+                cin >> choix;
         }
 
     } while(choix != 3);
@@ -79,11 +80,13 @@ void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
 char InterfaceJoueurs::demanderLettre()
 {
     char lettreProposee;
+    bool estSaisieValide = false;
 
     do
     {
         cout << "Entrez une lettre : ";
         cin >> lettreProposee;
+        // @todo : il faut vérifier si la saisie est bien une lettre (a-z ou A-Z) !
 
         if(find(lettresUtilisees.begin(), lettresUtilisees.end(), lettreProposee) !=
            lettresUtilisees.end())
@@ -93,9 +96,9 @@ char InterfaceJoueurs::demanderLettre()
         else
         {
             ajouterLettreUtilisee(lettreProposee);
-            break;
+            estSaisieValide = true;
         }
-    } while(true);
+    } while(!estSaisieValide);
 
     return lettreProposee;
 }
@@ -296,8 +299,7 @@ string InterfaceJoueurs::saisirNomJoueur()
         if(!cin.good())
         {
             std::cerr << "Saisie invalide ! Veuillez saisir à nouveau.\n";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            viderBuffer();
             nom = "";
         }
     } while(nom.empty());
@@ -305,7 +307,7 @@ string InterfaceJoueurs::saisirNomJoueur()
     return nom;
 }
 
-void InterfaceJoueurs::afficherNomJoueur(const string& nom)
+void InterfaceJoueurs::afficherNomJoueur(const std::string& nom)
 {
     cout << "Bienvenue " << nom << endl;
 }
@@ -331,13 +333,6 @@ void InterfaceJoueurs::afficherRegle()
          << endl;
     cout << endl;
 }
-struct Score
-{
-    std::string nom;
-    int         score;
-};
-
-std::vector<Score> scores;
 
 void InterfaceJoueurs::afficherScores()
 {
@@ -355,9 +350,9 @@ void InterfaceJoueurs::afficherScores()
     }
 }
 
-void ajouterScore(const std::string& nom, int tentativesRestantes)
+void InterfaceJoueurs::ajouterScore(const std::string& nom, int tentativesRestantes)
 {
-    int score = 11 - tentativesRestantes;
+    int score = NB_ESSAIS_MAX - tentativesRestantes;
 
     scores.push_back({ nom, score });
 }
@@ -365,4 +360,10 @@ void ajouterScore(const std::string& nom, int tentativesRestantes)
 void InterfaceJoueurs::viderLettreUtilisee()
 {
     lettresUtilisees.clear();
+}
+
+void InterfaceJoueurs::viderBuffer()
+{
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

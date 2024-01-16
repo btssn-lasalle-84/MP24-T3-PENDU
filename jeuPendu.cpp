@@ -22,9 +22,8 @@ JeuPendu::~JeuPendu()
 }
 
 JeuPendu::JeuPendu(const JeuPendu& jeuPendu) :
-    monInterface(new InterfaceJoueurs(*(jeuPendu.monInterface))),
-    dictionnaire(new Dictionnaire(*(jeuPendu.dictionnaire))),
-    monJoueur(new Joueur(*(jeuPendu.monJoueur))), mot(jeuPendu.mot),
+    monInterface(new InterfaceJoueurs), dictionnaire(new Dictionnaire),
+    monJoueur(new Joueur(jeuPendu.monJoueur->getNom())), mot(jeuPendu.mot),
     motAtrouver(jeuPendu.motAtrouver), tentativeRestantes(jeuPendu.tentativeRestantes),
     lettreProposee(jeuPendu.lettreProposee)
 {
@@ -38,9 +37,9 @@ JeuPendu& JeuPendu::operator=(const JeuPendu& jeuPendu)
         delete dictionnaire;
         delete monJoueur;
 
-        monInterface       = new InterfaceJoueurs(*(jeuPendu.monInterface));
-        dictionnaire       = new Dictionnaire(*(jeuPendu.dictionnaire));
-        monJoueur          = new Joueur(*(jeuPendu.monJoueur));
+        monInterface       = new InterfaceJoueurs;
+        dictionnaire       = new Dictionnaire;
+        monJoueur          = new Joueur(jeuPendu.monJoueur->getNom());
         mot                = jeuPendu.mot;
         motAtrouver        = jeuPendu.motAtrouver;
         tentativeRestantes = jeuPendu.tentativeRestantes;
@@ -102,6 +101,7 @@ void JeuPendu::lancerPartie()
                 monInterface->dessinerPendu(tentativeRestantes);
             }
         }
+        monInterface->ajouterScore(monJoueur->getNom(), tentativeRestantes);
         tentativeRestantes = NB_ESSAIS_MAX;
         monInterface->viderLettreUtilisee();
         monInterface->afficherMenu(*this);
@@ -155,6 +155,7 @@ int JeuPendu::getTentativesRestantes()
 {
     return tentativeRestantes;
 }
+
 void JeuPendu::choisirMot()
 {
     srand(time(0));
@@ -162,4 +163,3 @@ void JeuPendu::choisirMot()
     mot                 = dictionnaire->listeMots[indiceAleatoire];
     dictionnaire->genererMotSecret();
 }
-

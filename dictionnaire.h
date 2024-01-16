@@ -9,7 +9,7 @@ class Dictionnaire
   public:
     Dictionnaire();
 
-    void                     charger(const std::string& nomFichier);
+    void                     charger();
     std::string              genererMotSecret() const;
     std::vector<std::string> listeMots;
 
