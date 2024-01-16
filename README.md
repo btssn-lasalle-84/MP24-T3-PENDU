@@ -9,17 +9,17 @@
 - Numéro de version du logiciel : 1.1
 - Date de cette version du logiciel : 14 Janvier 2024
 
-## Présentation + Objectifs
+## Présentation
 
 Le jeu du pendu est un jeu de devinette dans lequel un joueur doit trouver un mot en devinant quelles lettres le composent. Voici comment le jeu du pendu fonctionne généralement :
 
 - Choix du mot : Un mot est choisi aléatoirement. Ce mot est généralement caché aux autres joueurs.
-- Affichage du mot caché : Le mot secret est représenté par des underscores, un pour chaque lettre du mot et la première et dernière lettre sont affichées. Par exemple, si le mot est "CHAT", il sera affiché comme "C _ _ T".
+- Affichage du mot caché : Le mot secret est représenté par des _underscores_ (tiret bas), un pour chaque lettre du mot et la première et dernière lettre sont affichées. Par exemple, si le mot est "CHAT", il sera affiché comme "C _ _ T".
 - Devine une lettre : L'utilisateur tente de deviner une lettre à la fois. Si la lettre est dans le mot secret, elle est révélée à sa place appropriée. Sinon, le joueur commence à dessiner les parties d'un pendu.
 - Dessin du pendu : Chaque fois qu'une lettre incorrecte est devinée, une partie du pendu est dessinée. Traditionnellement, le pendu est représenté par une potence et un bonhomme stylisé. Le but est de deviner le mot avant que le pendu ne soit entièrement dessiné.
 - Fin du jeu : Le jeu se termine lorsque le mot secret est entièrement révélé (gagné) ou lorsque le pendu est complètement dessiné (perdu).
 
-Le nombre de parties du pendu peut varier, mais il inclut généralement la potence, la tête, le tronc, les bras et les jambes, nous l'avons donc défini avec 11 tentatives.
+Le nombre de parties du pendu peut varier, mais il inclut généralement la potence, la tête, le tronc, les bras et les jambes, nous l'avons donc défini pour 11 tentatives.
 
 ## Utilisation
 
@@ -51,20 +51,21 @@ L'utilisateur peut desormais saisir les lettres en majuscule et en minuscule.
 
 ## TODO
 
-Dans la future version de ce jeu, il sera possible de choisir le thème des mots à deviner ainsi qu'une amélioration de l'interface joueur.
+Dans la version 2.0 de ce jeu, il sera possible de choisir le thème des mots à deviner ainsi qu'une amélioration de l'interface joueur.
 
 ## Défauts constatés non corrigés
 
-- Lorsqu'un mot long est tiré et que l'on saisit directement le mot, on se retrouve dans une boucle.
--Il n'est pas possible de voir les scores lorsque l'on choisit 2 dans le menu .
+- Il n'y a pas une vérification stricte de la saisie d'une lettre (a-Z ou A-Z)
 
 ## Itérations
 
-![Alt text](Images/iterations.png)
+![version 1.0](Images/iteration-1.0.png)
+
+![version 1.1](Images/iteration-1.1.png)
 
 ## Diagramme de classes
 
-![Alt text](<Images/Digramme-de-classe.png>)
+![diagramme-de-classes-1.1](<Images/diagramme-de-classes-1.1.png>)
 
 ## Équipe de développement
 
