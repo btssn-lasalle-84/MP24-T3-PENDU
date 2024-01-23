@@ -18,24 +18,25 @@ class JeuPendu
     Dictionnaire*     dictionnaire;
     Joueur*           monJoueur;
     std::string       mot;
-    std::string       motAtrouver;
-    int               tentativeRestantes;
+    std::string       motATrouver;
+    int               tentativesRestantes;
     char              lettreProposee;
 
   public:
     JeuPendu();
     ~JeuPendu();
     JeuPendu(const JeuPendu& autre);
-    JeuPendu&   operator=(const JeuPendu& autre);
-    void        choisirMot();
-    void        choisirTheme(JeuPendu& jeuPendu);
+    JeuPendu& operator=(const JeuPendu& autre);
+
+    void        demarrer();
     void        lancerPartie();
     std::string getMot() const;
     bool        estFinPartie() const;
     bool        verifierMot() const;
     bool        verifierLettre(char lettreProposee);
-    void        genererMotAtrouver();
+    void        genererMotATrouver();
     int         getTentativesRestantes();
+    void        choisirMot();
 };
 
 #endif // JEU_PENDU_H

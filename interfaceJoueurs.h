@@ -3,32 +3,37 @@
 
 #include <string>
 #include <vector>
-
-using namespace std;
+#include "score.h"
 
 class JeuPendu;
+
 class InterfaceJoueurs
 {
   private:
-    void quitter();
+    std::vector<char>  lettresUtilisees;
+    std::vector<Score> scores;
+
+    void viderBuffer() const;
 
   public:
-    vector<char> lettresUtilisees;
     InterfaceJoueurs();
-    int    choix;
-    void   choisirTheme();
-    void   lancerPartie(JeuPendu& jeuPendu);
-    void   afficherScores();
-    void   viderLettreUtilisee();
-    void   afficherMenu(JeuPendu& jeuPendu);
-    char   demanderLettre();
-    void   afficherTentatives(int tentativesRestantes);
-    void   dessinerPendu(int tentativesRestantes);
-    string saisirNomJoueur();
-    void   afficherNomJoueur(const string& nom);
-    void   ajouterLettreUtilisee(char lettre);
-    void   afficherMotATrouver(const string& motATrouver) const;
-    void   afficherRegle();
+
+    void        afficherInformations();
+    int         afficherMenu();
+    void        quitter();
+    void        ajouterLettreUtilisee(char lettre);
+    char        demanderLettre();
+    void        afficherTentatives(int tentativesRestantes);
+    void        dessinerPendu(int tentativesRestantes);
+    std::string saisirNomJoueur();
+    void        afficherNomJoueur(const std::string& nom);
+    void        afficherMotATrouver(const std::string& motATrouver) const;
+    void        afficherRegles();
+    void        afficherScores();
+    void        ajouterScore(const std::string& nom, int tentativesRestantes);
+    void        viderLettreUtilisee();
+    void        afficherMessage(const std::string& message) const;
+    int         choisirTheme(const std::vector<std::string>& themes) const;
 };
 
 #endif // INTERFACE_JOUEURS_H
