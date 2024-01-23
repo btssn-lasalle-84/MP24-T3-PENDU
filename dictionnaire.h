@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#define DOSSIER_THEMES "themes/"
+
 class Dictionnaire
 {
   private:

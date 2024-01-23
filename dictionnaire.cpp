@@ -15,7 +15,7 @@ void Dictionnaire::charger(int choixTheme)
     {
         return;
     }
-    std::string nomFichier = listeThemes[choixTheme] + string(".txt");
+    std::string nomFichier = DOSSIER_THEMES + string(listeThemes[choixTheme]) + string(".txt");
     ifstream    fichier(nomFichier);
 
     if(fichier.is_open())
