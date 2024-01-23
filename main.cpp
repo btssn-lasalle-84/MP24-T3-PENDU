@@ -1,11 +1,10 @@
-#include "interfaceJoueurs.h"
 #include "jeuPendu.h"
 
 int main()
 {
-    JeuPendu JeuPendu;
+    JeuPendu jeuPendu;
 
-    InterfaceJoueurs interfaceJoueurs;
+    jeuPendu.demarrer();
 
-    interfaceJoueurs.afficherMenu(JeuPendu);
+    return 0;
 }

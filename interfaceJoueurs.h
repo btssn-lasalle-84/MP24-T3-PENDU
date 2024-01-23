@@ -13,24 +13,27 @@ class InterfaceJoueurs
     std::vector<char>  lettresUtilisees;
     std::vector<Score> scores;
 
-    void quitter();
-    void viderBuffer();
+    void viderBuffer() const;
 
   public:
     InterfaceJoueurs();
-    void        lancerPartie();
-    void        afficherScores();
-    void        viderLettreUtilisee();
-    void        afficherMenu(JeuPendu& jeuPendu);
+
+    void        afficherInformations();
+    int         afficherMenu();
+    void        quitter();
+    void        ajouterLettreUtilisee(char lettre);
     char        demanderLettre();
     void        afficherTentatives(int tentativesRestantes);
     void        dessinerPendu(int tentativesRestantes);
     std::string saisirNomJoueur();
     void        afficherNomJoueur(const std::string& nom);
-    void        ajouterLettreUtilisee(char lettre);
     void        afficherMotATrouver(const std::string& motATrouver) const;
-    void        afficherRegle();
+    void        afficherRegles();
+    void        afficherScores();
     void        ajouterScore(const std::string& nom, int tentativesRestantes);
+    void        viderLettreUtilisee();
+    void        afficherMessage(const std::string& message) const;
+    int         choisirTheme(const std::vector<std::string>& themes) const;
 };
 
 #endif // INTERFACE_JOUEURS_H
