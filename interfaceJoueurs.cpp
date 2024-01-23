@@ -7,18 +7,15 @@
 
 using namespace std;
 
-InterfaceJoueurs::InterfaceJoueurs()
+InterfaceJoueurs::InterfaceJoueurs() : lettresUtilisees()
 {
 }
 
-void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
+void InterfaceJoueurs::afficherInformations()
 {
-    int choix;
-
     std::cout << "\033[1;31m";
-
     std::cout << "      _   ______  _    _     _____    _    _     ______   ______  ______   _____ "
-                 "   _    _    1.1\n";
+                 "   _    _    2.0\n";
     std::cout << "     | | | |     | |  | |   | | \\ \\  | |  | |   | |  | \\ | |     | |  \\ \\ | "
                  "| \\ \\  | |  | |\n";
     std::cout << " _   | | | |---- | |  | |   | |  | | | |  | |   | |__|_/ | |---- | |  | | | |  | "
@@ -26,50 +23,40 @@ void InterfaceJoueurs::afficherMenu(JeuPendu& jeuPendu)
     std::cout << "|_|__|_| |_|____ \\_|__|_|   |_|_/ /  \\_|__|_|   |_|      |_|____ |_|  |_| "
                  "|_|_/ /  \\_|__|_|\n";
     std::cout << "\n\n";
-
     std::cout << "\033[0m";
+}
 
+int InterfaceJoueurs::afficherMenu()
+{
     cout << "****************************\n";
     cout << "**   1. Nouvelle partie   **\n";
     cout << "**   2. Scores            **\n";
     cout << "**   3. Quitter           **\n";
     cout << "****************************\n";
-    cout << "Choisissez une option : ";
-    cin >> choix;
-    cout << endl;
+
+    int  choix;
+    bool choixValide = true;
     do
     {
-        switch(choix)
+        cout << "Choisissez une option : ";
+        cin >> choix;
+        viderBuffer();
+        choixValide = true;
+        // @todo : utiliser un enum pour les entrées de menu
+        if(choix < 1 || choix > 3)
         {
-            case 1:
-                lancerPartie();
-                jeuPendu.lancerPartie();
-                break;
-            case 2:
-                afficherScores();
-                afficherMenu(jeuPendu);
-                break;
-            case 3:
-                quitter();
-                break;
-            default:
-                cout << "Option invalide. Veuillez choisir à nouveau.\n";
-                viderBuffer();
-                cin >> choix;
+            cout << "choix invalide !\n";
+            choixValide = false;
         }
+    } while(!choixValide);
+    cout << endl;
 
-    } while(choix != 3);
-}
-
-void InterfaceJoueurs::lancerPartie()
-{
-    cout << "Lancement d'une nouvelle partie...\n";
+    return choix;
 }
 
 void InterfaceJoueurs::quitter()
 {
     cout << "Bye Bye, Merci d'avoir joué.\n";
-    exit(0);
 }
 
 void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
@@ -80,25 +67,25 @@ void InterfaceJoueurs::ajouterLettreUtilisee(char lettre)
 char InterfaceJoueurs::demanderLettre()
 {
     char lettreProposee;
-    bool estSaisieValide = false;
 
+    bool lettreValide = true;
     do
     {
         cout << "Entrez une lettre : ";
         cin >> lettreProposee;
-        // @todo : il faut vérifier si la saisie est bien une lettre (a-z ou A-Z) !
 
         if(find(lettresUtilisees.begin(), lettresUtilisees.end(), lettreProposee) !=
            lettresUtilisees.end())
         {
             cout << "Vous avez déjà proposé cette lettre. Veuillez en choisir une autre." << endl;
+            lettreValide = false;
         }
         else
         {
             ajouterLettreUtilisee(lettreProposee);
-            estSaisieValide = true;
+            lettreValide = true;
         }
-    } while(!estSaisieValide);
+    } while(!lettreValide);
 
     return lettreProposee;
 }
@@ -123,7 +110,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[94m"
                   << "Première tentative : Nan"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 9)
     {
@@ -137,7 +123,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[94m"
                   << "Deuxième tentative : Toujours pas"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 8)
     {
@@ -151,7 +136,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[34m"
                   << "Deuxième tentative : Oui mais non"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 7)
     {
@@ -166,7 +150,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[34m"
                   << "Troisième tentative : C'est pas encore ça"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 6)
     {
@@ -181,7 +164,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[36m"
                   << "Quatrième tentative : Sérieusement ?"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 5)
     {
@@ -196,7 +178,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[96m"
                   << "Cinquième tentative : Nuh uh"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 4)
     {
@@ -212,7 +193,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[92m"
                   << "Sixième tentative : Nope, nope et nope"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 3)
     {
@@ -228,7 +208,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[32m"
                   << "Septième tentative : Bon faut pas le faire exprès non plus"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 2)
     {
@@ -245,7 +224,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[93m"
                   << "Huitième tentative : C'est pas loin...(c'est faux, c'est pas ça du tout)"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 1)
     {
@@ -263,7 +241,6 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
         std::cout << "\033[31m"
                   << "Neuvième tentative : Dernière chance"
                   << "\033[0m" << std::endl;
-        std::cout << '\n';
     }
     if(tentativesRestantes == 0)
     {
@@ -278,12 +255,9 @@ void InterfaceJoueurs::dessinerPendu(int tentativesRestantes)
                   << '/' << ' ' << '\\' << '\n';
         std::cout << std::setfill(' ') << std::setw(5) << "|" << '\n';
         std::cout << std::setfill('-') << std::setw(11) << '\n';
-        std::cout
-          << "\033[35m"
-          << "Dernière tentative : En fait non c'était celle là la dernière (c'est fini, il "
-             "est mort le bonhomme)"
-          << "\033[0m" << std::endl;
-        std::cout << '\n';
+        std::cout << "\033[35m"
+                  << "C'était la dernière tentative !"
+                  << "\033[0m" << std::endl;
     }
 }
 
@@ -303,13 +277,16 @@ string InterfaceJoueurs::saisirNomJoueur()
             nom = "";
         }
     } while(nom.empty());
+    std::cout << std::endl;
 
     return nom;
 }
 
 void InterfaceJoueurs::afficherNomJoueur(const std::string& nom)
 {
-    cout << "Bienvenue " << nom << endl;
+    cout << "Bienvenue " << nom << ", vous avez " << NB_ESSAIS_MAX
+         << " tentatives pour deviner un mot !" << endl;
+    std::cout << std::endl;
 }
 
 void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
@@ -323,13 +300,13 @@ void InterfaceJoueurs::afficherMotATrouver(const std::string& motATrouver) const
     std::cout << std::endl;
 }
 
-void InterfaceJoueurs::afficherRegle()
+void InterfaceJoueurs::afficherRegles()
 {
     cout << endl;
-    cout << "-Le but du jeu est simple : deviner toute les lettres qui doivent composer un "
-            "mot,\n -éventuellement avec un nombre limité de tentatives et des thèmes fixés à "
-            "l'avance.\n -A chaque fois que le joueur devine une lettre,\n -celle-ci est affichée. "
-            "Dans le cas contraire, le dessin d'un pendu se met à apparaître…"
+    cout << "Le but du jeu est simple : deviner toute les lettres qui doivent composer un "
+            "mot,\n éventuellement avec un nombre limité de tentatives et des thèmes fixés à "
+            "l'avance.\nA chaque fois que le joueur devine une lettre,\n celle-ci est affichée. "
+            "Dans le cas contraire, le dessin d'un pendu se met à apparaître..."
          << endl;
     cout << endl;
 }
@@ -342,12 +319,20 @@ void InterfaceJoueurs::afficherScores()
     }
     else
     {
-        std::cout << "Scores :\n";
+        std::cout << "Scores :\n\n";
         for(const auto& score: scores)
         {
-            std::cout << score.nom << " : " << score.score << " points\n";
+            if(score.score > 1)
+            {
+                std::cout << " - " << score.nom << " : " << score.score << " points\n";
+            }
+            else
+            {
+                std::cout << " - " << score.nom << " : " << score.score << " point\n";
+            }
         }
     }
+    cout << endl;
 }
 
 void InterfaceJoueurs::ajouterScore(const std::string& nom, int tentativesRestantes)
@@ -362,7 +347,45 @@ void InterfaceJoueurs::viderLettreUtilisee()
     lettresUtilisees.clear();
 }
 
-void InterfaceJoueurs::viderBuffer()
+void InterfaceJoueurs::afficherMessage(const std::string& message) const
+{
+    cout << message << endl;
+}
+
+int InterfaceJoueurs::choisirTheme(const std::vector<std::string>& themes) const
+{
+    cout << "****************************\n";
+    for(size_t i = 0; i < themes.size(); ++i)
+    {
+        std::cout << "**   " << i + 1 << " - " << themes[i];
+        for(size_t j = themes[i].length(); j < 17; ++j)
+        {
+            std::cout << " ";
+        }
+        cout << "**\n";
+    }
+    cout << "****************************\n";
+
+    int  choix;
+    bool choixValide = true;
+    do
+    {
+        cout << "Choisissez le thème : ";
+        cin >> choix;
+        viderBuffer();
+        choixValide = true;
+        if(choix < 1 || choix > static_cast<int>(themes.size()))
+        {
+            cout << "choix invalide !\n";
+            choixValide = false;
+        }
+    } while(!choixValide);
+    cout << endl;
+
+    return (choix - 1);
+}
+
+void InterfaceJoueurs::viderBuffer() const
 {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

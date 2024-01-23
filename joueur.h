@@ -3,17 +3,15 @@
 
 #include <string>
 
-using namespace std;
-
 class Joueur
 {
   private:
-    string nom;
+    std::string nom;
 
   public:
-    Joueur(string nom = "joueur");
-    string getNom() const;
-    void   enregisterNom(const string& nom);
+    Joueur(std::string nom = "joueur");
+    std::string getNom() const;
+    void        enregisterNom(const std::string& nom);
 };
 
 #endif // JOUEUR_H

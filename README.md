@@ -5,9 +5,9 @@
 ## Informations
 
 - Nom du logiciel : Jeu Du Pendu
-- Date de début : 20 Décembre 2023
-- Numéro de version du logiciel : 1.1
-- Date de cette version du logiciel : 14 Janvier 2024
+- Date de début : 29 Novembre 2023
+- Numéro de version du logiciel : 2.0
+- Date de cette version du logiciel : Janvier 2024
 
 ## Présentation
 
@@ -20,6 +20,8 @@ Le jeu du pendu est un jeu de devinette dans lequel un joueur doit trouver un mo
 - Fin du jeu : Le jeu se termine lorsque le mot secret est entièrement révélé (gagné) ou lorsque le pendu est complètement dessiné (perdu).
 
 Le nombre de parties du pendu peut varier, mais il inclut généralement la potence, la tête, le tronc, les bras et les jambes, nous l'avons donc défini pour 11 tentatives.
+
+![](Images/pendu.gif)
 
 ## Utilisation
 
@@ -39,23 +41,16 @@ $ ./pendu.out
 
 ## Ce que le logiciel fait dans cette version
 
-Dans cette version, un mot est choisi aléatoirement dans une liste prédéfinie.
+On affiche le mot mystère et une lettre est demandée pour tenter de deviner le mot. Si la lettre choisie est dans le mot, la lettre est affichée à sa place dans le mot sinon, le pendu commence à se dessiner.
 
-On affiche le mot à deviner et une lettre est demandée pour tenter de deviner le mot, si la lettre choisie est dans le mot, la lettre est affichée à sa place dans le mot sinon, lorsque la lettre choisie n'est pas dans le mot, le pendu commence à se dessiner.
+La partie s'arrête lorsque le mot est découvert ou lorsque le joueur est arrivé au bout des 11 tentatives et que le dessin est entièrement dessiné.
 
-La partie s'arrête donc lorsque soit le joueur a trouver le bon mot, soit lorsque le joueur est arrivé au bout des 11 tentatives et que le dessin est entièrement dessiné.
-
-Le mot à trouver est affiché avec des espaces entre chaque tiret, ainsi qu'un affciahage en couleur vert lorsque qu'une lettre à été trouvé et rouge si ce n'est pas le cas.
-
-L'utilisateur peut desormais saisir les lettres en majuscule et en minuscule.
-
-## TODO
-
-Dans la version 2.0 de ce jeu, il sera possible de choisir le thème des mots à deviner ainsi qu'une amélioration de l'interface joueur.
+La saisie est insensible à la casse.
 
 ## Défauts constatés non corrigés
 
 - Il n'y a pas une vérification stricte de la saisie d'une lettre (a-Z ou A-Z)
+- Il n'y a pas de gestion des accents
 
 ## Itérations
 
@@ -63,9 +58,11 @@ Dans la version 2.0 de ce jeu, il sera possible de choisir le thème des mots à
 
 ![version 1.1](Images/iteration-1.1.png)
 
+![version 2.0](Images/iteration-2.0.png)
+
 ## Diagramme de classes
 
-![diagramme-de-classes-1.1](<Images/diagramme-de-classes-1.1.png>)
+![diagramme-de-classes-1.1](<Images/diagramme-de-classes-2.0.png>)
 
 ## Équipe de développement
 
@@ -74,4 +71,4 @@ Dans la version 2.0 de ce jeu, il sera possible de choisir le thème des mots à
 - Célian Armando celianarmando@gmail.com
 
 ---
-©️ BTS SNIR LaSalle Avignon 2024
+©️ BTS SNIR LaSalle Avignon 2023-2024
