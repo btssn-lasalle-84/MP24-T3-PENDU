@@ -43,7 +43,7 @@ $ ./pendu.out
 
 On affiche le mot mystère et une lettre est demandée pour tenter de deviner le mot. Si la lettre choisie est dans le mot, la lettre est affichée à sa place dans le mot sinon, le pendu commence à se dessiner.
 
-La partie s'arrête donc lorsque le mot est découvert ou lorsque le joueur est arrivé au bout des 11 tentatives et que le dessin est entièrement dessiné.
+La partie s'arrête lorsque le mot est découvert ou lorsque le joueur est arrivé au bout des 11 tentatives et que le dessin est entièrement dessiné.
 
 La saisie est insensible à la casse.
 

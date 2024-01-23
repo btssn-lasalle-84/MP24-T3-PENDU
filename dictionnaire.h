@@ -16,8 +16,6 @@ class Dictionnaire
     void                     charger(int choixTheme);
     std::string              genererMotSecret() const;
     std::vector<std::string> getListeThemes() const;
-
-  private:
 };
 
 #endif // DICTIONNAIRE_H
